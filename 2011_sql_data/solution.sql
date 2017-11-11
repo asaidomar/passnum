@@ -5,6 +5,19 @@ CREATE DATABASE STATS;
 -- obligatoire pour dire sur quelle base nous allons opérer
 USE STATS;
 
+-- CAS PRATIQUE 1 --
+
+CREATE TABLE dpt2015 (sexe INT(1), preusuel VARCHAR(20), annais INT(4), dpt INT(3), nombre MEDIUMINT);
+
+LOAD DATA LOCAL INFILE "dpt2015.txt" INTO TABLE dpt2015 COLUMNS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+SELECT preusuel, sum(nombre) as sum_used from dpt2015 where annais >= 1960 group by preusuel order by sum_used desc limit 10;
+
+select preusuel, annais, sum(nombre) as sum_used from dpt2015 where dpt = 13  group by preusuel, annais order by annais, sum_used desc LIMIT 10;
+
+
+
+-- CAS PRATIQUE 2 --
 
 -- création de la table DEP_2014
 CREATE TABLE DEP_2014 (
