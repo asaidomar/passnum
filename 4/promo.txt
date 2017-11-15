@@ -1,0 +1,11 @@
+id_promo	id_ecole	id_responsable	annee	specialite
+1	1	11	2017	
+2	1	93	2016	
+3	1	229	2015	
+4	1	161	2017	Math Spe
+5	1	25	2016	Math Spe
+6	1	80	2017	Chimie Spe
+7	1	26	2016	Chimie Spe
+8	1	38	2017	Micro Elect
+9	1	198	2016	Micro Elect
+10	1	196	2017	Passnum
