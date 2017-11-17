@@ -1,0 +1,9 @@
+Cas pratique 1 - Entités Ecoles 
+
+Question 1 :
+	CREATE DATABASE Centrale_Marseille;
+Question 2 :
+	USE Centrale_Marseille; 
+	CREATE TABLE Ecole; 
+Question 3 :
+	 
