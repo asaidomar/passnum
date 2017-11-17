@@ -1,4 +1,4 @@
 
-1- create database Centrale Marseille
+1- create database Centrale_Marseille
 
 2- create table Ecole
