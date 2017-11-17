@@ -1,3 +1,5 @@
-CREATE DATABASE Centrale_Marseille CHARACTER SET "utf8"
-USE Centrale_Marseille
-CREATE TABLE ecole (ID int);
+Question 1:
+CREATE DATABASE Centrale_Marseille;
+
+question 2:
+ create table ecole (id_ecole int (10),nom_ecole varchar (30),directeur varchar (30));
