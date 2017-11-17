@@ -1,0 +1,3 @@
+Question 1 : CREATE DATABASE CENTRALE_MARSEILLE;
+Question 2 : CREATE TABLE ecole (id_ecole int (10),nom_ecole varchar (30),directeur varchar (30));
+
