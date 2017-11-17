@@ -1,3 +1,5 @@
 Question 1 :
 
 mysql> create databases Centrale_Marseille;
+
+create tables ecole;
