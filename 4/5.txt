@@ -1,0 +1,4 @@
+mysql -u root -p
+
+1-CREATE DATABASE Centrale_Marseille;
+
