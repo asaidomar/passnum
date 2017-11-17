@@ -1,0 +1,5 @@
+CREATE DATABASE Centrale_Marseille CHARACTER SET 'utf8';
+ définir l'encodage utilisé (l'UTF-8)
+
+CREATE TABLE Ecole;
+
