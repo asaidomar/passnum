@@ -5,7 +5,5 @@ question 2:
  create table ecole (id_ecole int (10),nom_ecole varchar (30),directeur varchar (30));
  
  Question n°3:
- INSERT INTO ecole [1,
- "École Centrale"
- , "Directeur",
- ];
+ INSERT INTO ecole 
+ VALUES (1, "École Centrale","Directeur",);
