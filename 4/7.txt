@@ -2,4 +2,4 @@
 
 Create database Centrale_Marseille;
 
-Question 2 : CREATE TABLE ecole
+Question 2 : CREATE TABLE ecole;
