@@ -1,3 +1,2 @@
 1- create databe Centrale Marseille
 
-2- create table Ecole
