@@ -2,3 +2,6 @@ CREATE DATABASE Centrale_Marseille CHARACTER SET "utf8"
 USE Centrale_Marseille
 CREATE TABLE ecole (ID int);
 
+Question 3 :
+insert into ecole  values (1 , 'Centrale_Marseille' , 'Directeur');
+
