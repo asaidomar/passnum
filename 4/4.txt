@@ -1,2 +1,2 @@
-Question 1:
-CREATE DATABASE Centrale_Marseille;
+1- create databe Centrale Marseille
+
