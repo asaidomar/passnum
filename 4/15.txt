@@ -4,6 +4,10 @@ Question 1 :
 	CREATE DATABASE Centrale_Marseille;
 Question 2 :
 	USE Centrale_Marseille; 
+
+	CREATE TABLE Ecole (id_ecole INT(10) PRIMARY KEY NOT NULL, nom_ecole VARCHAR(30), directeur TEXT(30));
+
+
 	CREATE TABLE Ecole;	 
 	 
 Question 3 :
