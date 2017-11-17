@@ -1,0 +1,301 @@
+id_personnelid_servicerole
+1	2	Professeur Informatique
+2	2	Professeur Informatique
+3	2	Professeur Physique
+4	5	Collaborateur
+5	6	Responsable
+6	2	Professeur Mathematiques
+7	2	Professeur Chimie
+8	2	Professeur Physique
+9	2	Professeur Informatique
+10	2	Professeur Mathematiques
+11	2	Professeur Sciences Sociales
+12	2	Professeur Physique
+13	1	Directeur
+14	4	Directeur
+15	2	Professeur Mecanique
+16	3	Directeur
+17	5	Collaborateur
+18	2	Professeur Physique
+19	1	Directeur
+20	6	Responsable
+21	7	Directeur
+22	2	Professeur Informatique
+23	2	Professeur Sciences Sociales
+24	2	Professeur Informatique
+25	2	Professeur Mecanique
+26	2	Professeur Sciences Sociales
+27	8	Collaborateur
+28	2	Professeur Sciences Sociales
+29	2	Professeur Sciences Sociales
+30	1	Responsable
+31	5	Responsable
+32	2	Professeur Mathematiques
+33	1	Responsable
+34	2	Professeur Sciences Sociales
+35	1	Collaborateur
+36	2	Professeur Mecanique
+37	2	Professeur Sciences Sociales
+38	8	Responsable
+39	7	Directeur
+40	2	Professeur Physique
+41	2	Professeur Mecanique
+42	2	Professeur Physique
+43	5	Collaborateur
+44	2	Professeur Mathematiques
+45	2	Professeur Sciences Sociales
+46	2	Professeur Physique
+47	6	Directeur
+48	8	Responsable
+49	2	Professeur Physique
+50	6	Responsable
+51	2	Professeur Informatique
+52	1	Directeur
+53	7	Responsable
+54	5	Directeur
+55	2	Professeur Sciences Sociales
+56	2	Professeur Mathematiques
+57	2	Professeur Mecanique
+58	3	Responsable
+59	7	Responsable
+60	2	Professeur Physique
+61	2	Professeur Chimie
+62	2	Professeur Mecanique
+63	2	Professeur Mathematiques
+64	6	Collaborateur
+65	1	Directeur
+66	8	Collaborateur
+67	8	Directeur
+68	1	Responsable
+69	8	Responsable
+70	1	Directeur
+71	3	Responsable
+72	8	Directeur
+73	2	Professeur Physique
+74	7	Collaborateur
+75	2	Professeur Mathematiques
+76	2	Professeur Chimie
+77	3	Responsable
+78	2	Professeur Chimie
+79	2	Professeur Mathematiques
+80	2	Professeur Chimie
+81	2	Professeur Physique
+82	2	Professeur Chimie
+83	2	Professeur Sciences Sociales
+84	8	Collaborateur
+85	2	Professeur Informatique
+86	4	Collaborateur
+87	2	Professeur Sciences Sociales
+88	2	Professeur Mathematiques
+89	8	Responsable
+90	5	Directeur
+91	2	Professeur Physique
+92	2	Professeur Physique
+93	1	Collaborateur
+94	2	Professeur Sciences Sociales
+95	3	Directeur
+96	2	Professeur Physique
+97	2	Professeur Chimie
+98	2	Professeur Informatique
+99	2	Professeur Informatique
+100	4	Directeur
+101	4	Responsable
+102	3	Directeur
+103	1	Responsable
+104	2	Professeur Physique
+105	6	Collaborateur
+106	2	Professeur Mathematiques
+107	2	Professeur Sciences Sociales
+108	4	Responsable
+109	2	Professeur Sciences Sociales
+110	2	Professeur Informatique
+111	3	Directeur
+112	2	Professeur Sciences Sociales
+113	8	Collaborateur
+114	4	Collaborateur
+115	1	Directeur
+116	4	Directeur
+117	4	Directeur
+118	2	Professeur Chimie
+119	2	Professeur Physique
+120	1	Collaborateur
+121	2	Professeur Chimie
+122	2	Professeur Physique
+123	2	Professeur Mathematiques
+124	2	Professeur Mecanique
+125	2	Professeur Physique
+126	2	Professeur Physique
+127	2	Professeur Informatique
+128	2	Professeur Chimie
+129	2	Professeur Chimie
+130	4	Directeur
+131	1	Responsable
+132	2	Professeur Sciences Sociales
+133	1	Directeur
+134	2	Professeur Informatique
+135	4	Collaborateur
+136	2	Professeur Chimie
+137	2	Professeur Mathematiques
+138	6	Directeur
+139	2	Professeur Chimie
+140	2	Professeur Informatique
+141	2	Professeur Mathematiques
+142	7	Directeur
+143	2	Professeur Mecanique
+144	8	Collaborateur
+145	2	Professeur Physique
+146	2	Professeur Physique
+147	6	Responsable
+148	6	Collaborateur
+149	7	Directeur
+150	3	Responsable
+151	4	Directeur
+152	2	Professeur Mecanique
+153	2	Professeur Sciences Sociales
+154	2	Professeur Chimie
+155	5	Directeur
+156	2	Professeur Sciences Sociales
+157	2	Professeur Physique
+158	2	Professeur Physique
+159	2	Professeur Informatique
+160	6	Directeur
+161	6	Responsable
+162	2	Professeur Mecanique
+163	6	Directeur
+164	5	Directeur
+165	8	Directeur
+166	6	Collaborateur
+167	2	Professeur Informatique
+168	2	Professeur Informatique
+169	1	Responsable
+170	2	Professeur Mathematiques
+171	2	Professeur Mathematiques
+172	2	Professeur Mecanique
+173	2	Professeur Physique
+174	2	Professeur Mecanique
+175	1	Responsable
+176	2	Professeur Sciences Sociales
+177	2	Professeur Chimie
+178	3	Directeur
+179	2	Professeur Chimie
+180	2	Professeur Sciences Sociales
+181	2	Professeur Chimie
+182	7	Collaborateur
+183	2	Professeur Mathematiques
+184	2	Professeur Physique
+185	2	Professeur Chimie
+186	2	Professeur Chimie
+187	5	Responsable
+188	2	Professeur Mecanique
+189	2	Professeur Sciences Sociales
+190	2	Professeur Physique
+191	2	Professeur Informatique
+192	3	Responsable
+193	4	Directeur
+194	2	Professeur Physique
+195	2	Professeur Chimie
+196	3	Directeur
+197	3	Responsable
+198	2	Professeur Physique
+199	2	Professeur Mecanique
+200	2	Professeur Chimie
+201	4	Collaborateur
+202	3	Directeur
+203	2	Professeur Mathematiques
+204	2	Professeur Physique
+205	2	Professeur Informatique
+206	2	Professeur Sciences Sociales
+207	2	Professeur Mathematiques
+208	2	Professeur Sciences Sociales
+209	2	Professeur Mathematiques
+210	2	Professeur Chimie
+211	2	Professeur Sciences Sociales
+212	7	Directeur
+213	2	Professeur Mathematiques
+214	2	Professeur Physique
+215	4	Directeur
+216	3	Collaborateur
+217	3	Responsable
+218	6	Directeur
+219	5	Responsable
+220	3	Responsable
+221	7	Directeur
+222	1	Collaborateur
+223	6	Collaborateur
+224	6	Collaborateur
+225	2	Professeur Sciences Sociales
+226	2	Professeur Informatique
+227	7	Directeur
+228	2	Professeur Sciences Sociales
+229	2	Professeur Mecanique
+230	3	Responsable
+231	6	Collaborateur
+232	1	Responsable
+233	2	Professeur Sciences Sociales
+234	2	Professeur Sciences Sociales
+235	2	Professeur Sciences Sociales
+236	2	Professeur Chimie
+237	2	Professeur Mathematiques
+238	2	Professeur Sciences Sociales
+239	2	Professeur Sciences Sociales
+240	2	Professeur Mathematiques
+241	3	Collaborateur
+242	2	Professeur Mathematiques
+243	3	Responsable
+244	2	Professeur Sciences Sociales
+245	7	Responsable
+246	2	Professeur Mecanique
+247	4	Collaborateur
+248	4	Responsable
+249	4	Responsable
+250	2	Professeur Informatique
+251	2	Professeur Mecanique
+252	2	Professeur Mecanique
+253	3	Responsable
+254	1	Collaborateur
+255	2	Professeur Chimie
+256	2	Professeur Sciences Sociales
+257	2	Professeur Sciences Sociales
+258	2	Professeur Sciences Sociales
+259	2	Professeur Mecanique
+260	2	Professeur Mathematiques
+261	5	Directeur
+262	2	Professeur Mecanique
+263	2	Professeur Physique
+264	3	Responsable
+265	2	Professeur Informatique
+266	2	Professeur Physique
+267	3	Collaborateur
+268	3	Directeur
+269	2	Professeur Sciences Sociales
+270	6	Collaborateur
+271	8	Directeur
+272	2	Professeur Sciences Sociales
+273	1	Directeur
+274	8	Responsable
+275	4	Directeur
+276	8	Directeur
+277	4	Responsable
+278	2	Professeur Chimie
+279	2	Professeur Mathematiques
+280	2	Professeur Physique
+281	8	Responsable
+282	2	Professeur Physique
+283	4	Directeur
+284	6	Responsable
+285	1	Responsable
+286	2	Professeur Chimie
+287	2	Professeur Sciences Sociales
+288	2	Professeur Mathematiques
+289	2	Professeur Informatique
+290	2	Professeur Physique
+291	2	Professeur Mecanique
+292	2	Professeur Mecanique
+293	4	Collaborateur
+294	8	Responsable
+295	7	Collaborateur
+296	2	Professeur Chimie
+297	2	Professeur Mathematiques
+298	2	Professeur Informatique
+299	2	Professeur Informatique
+300	2	Professeur Physique
