@@ -3,8 +3,8 @@ Cas pratique 1 - Entités Ecoles
 Question 1 :
 	CREATE DATABASE Centrale_Marseille;
 Question 2 :
-	USE Centrale_Marseille;
-	CREATE TABLE Ecole(id_ecole INT, nom_ecole VARCHAR(20), directeur VARCHAR(10));
+	USE Centrale_Marseille; 
+	CREATE TABLE Ecole;	 
 	 
 Question 3 :
 	 
