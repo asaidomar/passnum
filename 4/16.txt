@@ -1,1 +1,1 @@
-select etudiant, sum (prenom);
+mysql> create databases Centrale_Marseille;
