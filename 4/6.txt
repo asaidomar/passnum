@@ -1,3 +1,4 @@
-CREATE DATABASE Centrale_Marseille CHARACTER SET "utf8"
+CREATE DATABASE Centrale_Marseille;
 USE Centrale_Marseille
 CREATE TABLE ecole (ID int);
+CREATE TABLE Service (Informatique VARCHAR(20), Enseignement VARCHAR(20), Scolarité VARCHAR(20), Gestion VARCHAR(20), Direction VARCHAR(20), RH VARCHAR(20), Relation Entrepise VARCHAR(20), Recherche VARCHAR(20));
