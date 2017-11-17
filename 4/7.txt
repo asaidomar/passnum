@@ -1,3 +1,5 @@
 - Question 1 -
 
 Create database Centrale_Marseille;
+
+Question 2 : CREATE TABLE ecole
