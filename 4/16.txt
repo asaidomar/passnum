@@ -1,1 +1,0 @@
-mysql> create databases Centrale_Marseille;
