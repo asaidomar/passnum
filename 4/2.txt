@@ -1,4 +1,4 @@
-CREATE DATABASE Centrale_Marseille CHARACTER SET "utf8"
-USE Centrale_Marseille
-CREATE TABLE ecole (ID int);
-
+1-)CREATE DATABASE Centrale_Marseille CHARACTER SET "utf8"
+2-)USE Centrale_Marseille
+2.5-)CREATE TABLE ecole (ID int);
+3-)INSERT INTO ecole (1,"École Centrale", "Directeur");
