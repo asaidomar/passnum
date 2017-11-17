@@ -1,5 +1,13 @@
 - Question 1 -
 
 Create database Centrale_Marseille;
+Question 2 : CREATE TABLE ecole
 
-Question 2 : CREATE TABLE ecole;
+- Question 2 - 
+
+CREATE TABLE ecole
+(
+	id_ecole INT(10) PRIMARY KEY,
+	nom_ecole VARCHAR(30) UNIQUE,
+	directeur VARCHAR(30)	
+);
