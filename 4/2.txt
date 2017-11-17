@@ -1,0 +1,2 @@
+CREATE DATABASE "Centrale Marseille";
+CREATE TABLE "Ecole";
