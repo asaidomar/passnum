@@ -48,12 +48,54 @@ INSERT INTO Batiment (id_ecole, id_batiment, nom_batiment)
 Question 8:
 CREATE TABLE Salle (id_batiment INT(10), id_salle INT(10) PRIMARY KEY NOT NULL, num_salle VARCHAR(30), capacite_salle INT(4), possede_tableu bool, possede_retro bool);
 
+
 Question 9:
 LOAD DATA INFILE 'home/amanda/Documents/workspace/passnum/sale.txt'
+	INTO TABLE Salle
+	COLUMNS TERMINATED BY '\t'
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES;
+
+
+Question 10:
+CREATE TABLE Promo (id_promo INT(10) PRIMARY KEY NOT NULL, id_ecole VARCHAR(10), id_responsable INT(10), annee INT(4), specialite VARCHAR(50));
+
+
+Question 11:
+LOAD DATA INFILE 'home/amanda/Documents/workspace/passnum/promo.txt'
 	INTO TABLE Promo
 	COLUMNS TERMINATED BY '\t'
 	LINES TERMINATED BY '\n'
 	IGNORE 1 LINES;
+
+
+Question 12:
+CREATE TABLE Personnel (id_personnel INT(10) PRIMARY KEY NOT NULL, id_responsable INT(10), nom VARCHAR(250), prenom VARCHAR(250), id_secu INT(20), status ENUM(Vacataire, Interne, Prestataire), num_banque VARCHAR(50), date_entree DATE, date_sortie DATE);
+
+
+Question 13:
+LOAD DATA INFILE 'home/amanda/Documents/workspace/passnum/personnel.txt'
+	INTO TABLE Personnel
+	COLUMNS TERMINATED BY '\t'
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES;
+
+
+Question 14:
+CREATE TABLE Etudiant (id_etudiant INT(10) PRIMARY KEY NOT NULL, id_promo INT(10), nom VARCHAR(250), prenom VARCHAR(250), id_secu INT(20), num_banque INT(50));
+
+
+Question 15:
+LOAD DATA INFILE 'home/amanda/Documents/workspace/passnum/etudiant.txt'
+	INTO TABLE Etudiant
+	COLUMNS TERMINATED BY '\t'
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES;
+
+
+Question 16:
+SELECT COUNT (id_etudiant) FROM etudiant;
+
 
 
 
