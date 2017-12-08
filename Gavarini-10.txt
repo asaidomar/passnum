@@ -20,7 +20,7 @@ Create table Promo (id_promo int(10) primary key, id_ecole int(10), id_responsab
 
 Load data local infile '/home/hacker/workspace/passnum/4/promo.txt' into table Promo columns terminated by '\t' ignore 1 lines;
 
-Create table Personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(250), prenom varchar(250), id_secu int(20), status set ('Vacataire', 'Interne', 'Prestataire'), num_banque int(50), date_entree date, date_sortie date);
+Create table Personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(250), prenom varchar(250), id_secu int(20), status set ('Vacataire', 'Interne', 'Prestataire'), num_banque varchar(50), date_entree date, date_sortie date);
 
 Load data local infile '/home/hacker/workspace/passnum/4/personnel.txt' into table Personnel columns terminated by '\t' ignore 1 lines;
 
@@ -32,20 +32,20 @@ Select count(id_etudiant) as nombre_etudiant from Etudiant;
 
 Select avg(age) as age_etudiant from Etudiant;
 
-Select Promo.specialite, nom, prenom, annee from Etudiant, Promo where Promo.annee = 2017 && Promo.specialite = 'Passnum' && Etudiant.id_promo = Promo.id_promo;
+Select Promo.specialite, nom, prenom, annee from Etudiant, Promo where Promo.annee = 2017 and Promo.specialite = 'Passnum' and Etudiant.id_promo = Promo.id_promo;
 
-Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2017 && Etudiant.id_promo = Promo.id_promo;
+Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2017 and Etudiant.id_promo = Promo.id_promo;
 
-Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2016 && Etudiant.id_promo = Promo.id_promo;
+Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2016 and Etudiant.id_promo = Promo.id_promo;
 
-Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2015 && Etudiant.id_promo = Promo.id_promo;
+Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2015 and Etudiant.id_promo = Promo.id_promo;
 
 Create table Service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
 
 Load data local infile '/home/hacker/workspace/passnum/4/service_user.txt' into table Service_has_user columns terminated by '\t' ignore 1 lines;
 
-Select nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
+Select nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service and Service_has_user.id_personnel = Personel.id_personnel and nom_service = 'Informatique';
 
-Select count(id_personnel) from Service_has_user, Service where Service_has_user.id_service = 2 && Service_has_user.id_service = Service.id_service;
+Select count(id_personnel) from Service_has_user, Service where role like "%Professeur%" and Service_has_user.id_service = 2 and Service_has_user.id_service = Service.id_service;
 
-Select nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' && Personnel.id_personnel = Service_has_user.id_personnel;
+Select nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' and Personnel.id_personnel = Service_has_user.id_personnel;
