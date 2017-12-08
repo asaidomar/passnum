@@ -18,6 +18,13 @@ question 5
 
  INSERT INTO  Service (id_ecole,id_service,nom_service) VALUES (2,1,"informatique"),(2,2,"enseignement"),(2,3,"scolarite"),(2,4,"gestion"),(2,5,"direction"),(2,6,"RH"),(2,7,"relation entreprise"),(2,8,"recherche");
 
+question 6
+
+CREATE TABLE Batiment (id_ecole INT(10), id_batiment INT(10), nom_batiment VARCHAR(30));  
+
+question 7
+
+INSERT INTO Batiment (id_ecole,id_batiment,nom_batiment) VALUES (2,1,"Pythagore"),(2,2,"Euclide"),(2,3,"Archimede"),(2,4,"Copernic"),(2,5,"Galilée"),(2,6,"Kepler"),(2,7,"Descartes"),(2,8,"Torricelli"),(2,9,"Newton"),(2,10,"Laplace");
 
 
 
