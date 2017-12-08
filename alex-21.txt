@@ -1,1 +1,10 @@
 question 1 :
+mysql> CREATE DATABASE Centrale_Marseille;
+
+question 2 :
+mysql> create table ecole (id_ecole int primary key, nom_ecole varchar(30), directeur varchar (30));
+
+
+question 3 : 
+mysql> insert into ecole (id_ecole , nom_ecole, directeur) values (1,'Central Marseille', 'Frédéric Fotiadu');
+
