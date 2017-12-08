@@ -62,7 +62,7 @@ CREATE TABLE Promo (id_promo int(10) primary key, id_ecole int(10), id_responsab
 
 11 - Insérer les donnes du fichier promo.txt 
 
-Load data local infile '/home/Bureau/passnum/4/promo.txt' into table Promo columns terminated by '\t' ignore 1 lines;
+Load data local infile '/home/Bureau/passnum/4/promo.txt' INTO TABLE Promo COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE Personnel (id_personnel int(10) primary key, id_responsable int(10)
 
 13 - Insérer les données personnel.txt 
 
-LOAD DATA LOCAL INFILE '/home/Bureau/passnum/4/personnel.txt' into table Personnel columns terminated by '\t' ignore 1 lines;
+LOAD DATA LOCAL INFILE '/home/Bureau/passnum/4/personnel.txt' INTO TABLE Personnel COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -83,43 +83,43 @@ CREATE TABLE Etudiant (id_etudiant int(10) primary key, id_promo int(10), nom va
 
 15 - Insérer les donnes du fichier etudiant.txt
 
-LOAD DATA LOCAL INFILE '/home/Bureau/passnum/4/etudiant.txt' into table Etudiant columns terminated by '\t' ignore 1 lines;
+LOAD DATA LOCAL INFILE '/home/Bureau/passnum/4/etudiant.txt' INTO TABLE Etudiant COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 16 - Requete pour counter le nombe total d'etudiants 
 
-SELECT count(id_etudiant) as nombre_etudiant from Etudiant;  // lister le nombre d'étudiants (sans distinction)
+SELECT count(id_etudiant) AS nombre_etudiant FROM Etudiant;  // lister le nombre d'étudiants (sans distinction)
 
 
 17 - Requete pour avoir l'age moyen des etudiants
 
-SELECT avg(age) as age_etudiant from Etudiant;  // voir la moyenne d'âge
+SELECT avg(age) AS age_etudiant FROM Etudiant;  // voir la moyenne d'âge
 
 
 
 18 - Requete pour lister les élèves de la promo "Passnum 2017"
 
-SELECT Promo.specialite, nom, prenom, annee from Etudiant, Promo where Promo.annee = 2017 && Promo.specialite = 'Passnum' && Etudiant.id_promo = Promo.id_promo;
+SELECT Promo.specialite, nom, prenom, annee FROM Etudiant, Promo WHERE Promo.annee = 2017 AND Promo.specialite = 'Passnum' && Etudiant.id_promo = Promo.id_promo;
 
 // selectionner les étudiants d'une promo en particulier
 
 
 19 - Requete pour compter le nombre d'élèves dans les promo 2017
 
-SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2017 && Etudiant.id_promo = Promo.id_promo;
+SELECT COUNT(id_etudiant) AS nombre_etudiant FROM Etudiant FROM Etudiant, Promo WHERE Promo.annee = 2017 AND Etudiant.id_promo = Promo.id_promo;
 
 
 20 - Requete pour compter le nombre d'élèves dans les promo 2016
 
-SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2016 && Etudiant.id_promo = Promo.id_promo;
+SELECT COUNT(id_etudiant) as nombre_etudiant FROM Etudiant FROM Etudiant, Promo WHERE Promo.annee = 2016 AND Etudiant.id_promo = Promo.id_promo;
 
 
 21 - Requete pour compter le nombre d'élèves dans les promo 2015
 
 
-SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2015 && Etudiant.id_promo = Promo.id_promo;
+SELECT COUNT(id_etudiant) as nombre_etudiant FROM Etudiant FROM Etudiant, Promo WHERE Promo.annee = 2015 AND Etudiant.id_promo = Promo.id_promo;
 
 
 
@@ -133,13 +133,13 @@ CREATE TABLE Service_has_user (id_personnel int(10), id_service int(10), role va
 
 23 - Insérer les données service_user.txt dans la table Service_has_user  
 
-LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/4/service_user.txt' INTO TABLE Service_has_user columns terminated by '\t' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/4/service_user.txt' INTO TABLE Service_has_user COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
 
 
 
 24 - Requete pour lister tout le personnel du service "Informatique" (Merci à Kévin)
 
-SELECT nom, prenom, service FROM Personnel, Service_has_user, Service WHERE Service.id_service = Service_has_user.id_service AND Service_has_user.id_personnel = Personel.id_personnel and nom_service = 'Informatique';
+SELECT nom, prenom, service FROM Personnel, Service_has_user, Service WHERE Service.id_service = Service_has_user.id_service AND Service_has_user.id_personnel = Personel.id_personnel AND nom_service = 'Informatique';
 
 
 25 - Requete pour compter le nombre de professeurs 
