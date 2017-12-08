@@ -1,0 +1,5 @@
+CREATE DATABASE Centrale_Marseille CHARACTER SET "utf8"
+USE Centrale_Marseille
+CREATE TABLE Ecole (id_ecole INT(10) PRIMARY KEY NOT NULL, nom_ecole VARCHAR(20) UNIQUE, directeur TEXT(30));
+
+
