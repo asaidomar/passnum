@@ -16,4 +16,4 @@
 
 9 - LOAD DATA LOCAL INFILE 'salle.txt' INTO TABLE salle COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
 
-
+10 - CREATE TABLE promo (id_promo int(10) primary key, id_ecole int(10), id_reponsable int(10), annee int(4), specialite varchar(50));
