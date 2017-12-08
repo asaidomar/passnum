@@ -1,3 +1,74 @@
 Question 1:
 
 create database " Centrale_Marseille";
+
+Question 2:
+
+create table ecole ( id_ecole int (10) primary key , nom_ecole varchar (30) unique , directeur varchar (30));
+
+
+Question 3:
+
+insert into ecole values ( 1 , 'Centrale_Marseille' , 'Frederic Fotiadu');
+
+Question 4:
+
+create table service ( id_ecole int (10) , id_service int (10) primary key , nom_service varchar (30) unique);
+
+
+Question 5:
+
+insert into service (id_ecole , id_service , nom_service) values
+(1 , 1 ,'informatique'),
+(1 , 2 ,'enseignement'),
+(1 , 3 ,'scolarite'),
+(1 , 4 ,'gestion'),
+(1 , 5 , 'direction'),
+(1 , 6 , 'RH'),
+(1 , 7 , 'relation'),
+(1 , 8 , 'entreprise'),
+(1 , 9 , 'recherche');
+
+
+Question 6:
+
+create table batiment ( id_ecole int (10) , id_batiment int (10) primary key , nom_batiment varchar (30));
+
+
+Question 7:
+
+insert into batiment (id_ecole , id_batiment , nom_batiment) values
+(1 , 1 ,'Pythagore'),
+(1 , 2 ,'Euclide'),
+(1 , 3 ,'Archimede'),
+(1 , 4 ,'Copernic'),
+(1 , 5 , 'Galilee'),
+(1 , 6 , 'Kepler'),
+(1 , 7 , 'Descartes'),
+(1 , 8 , 'Torricelli'),
+(1 , 9 , 'Newton')
+(1 , 10 , 'Laplace');
+
+
+Question 8:
+
+create table salle (id_batiment int (10) , id_salle int (10) primary key , num_salle int (4) , capacite_salle int (4) , possede_tableau int (1) , possede_retro int (1));
+
+
+Question 9:
+
+load data local infile 'home/workspace/4/salle.txt'
+into table salle
+field
+terminated by '\t'
+enclosed by ''
+escaped by '\\'
+lines
+starting by ''
+terminated by '\n'
+ignore 1 lines;
+
+
+Question 10:
+
+create table promo ( id_promo int (10) primary key , id_ecole int (10) , id_responsable int (10) , annee int (4) , specialite varchar (50));
