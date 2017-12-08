@@ -46,7 +46,14 @@ INSERT INTO Batiment (id_ecole, id_batiment, nom_batiment)
 
 
 Question 8:
+CREATE TABLE Salle (id_batiment INT(10), id_salle INT(10) PRIMARY KEY NOT NULL, num_salle VARCHAR(30), capacite_salle INT(4), possede_tableu bool, possede_retro bool);
 
+Question 9:
+LOAD DATA INFILE 'home/amanda/Documents/workspace/passnum/sale.txt'
+	INTO TABLE Promo
+	COLUMNS TERMINATED BY '\t'
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES;
 
 
 
