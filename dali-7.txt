@@ -1,0 +1,3 @@
+Question 1:
+
+create database " Centrale_Marseille";
