@@ -42,6 +42,23 @@ question 11
 
 LOAD DATA LOCAL INFILE '/home/amraoui/work-space/passnum/4/promo.txt' INTO  Table Salle FIELDS TERMINATED by "\t" LINES TERMINATED by "\n" IGNORE 1 LINES;
 
+question 12
+
+CREATE TABLE Personnel (id_personnel INT(10)PRIMARY KEY, id_responsable INT(10), nom VARCHAR(250), prenom VARCHAR(250), id_secu INT(20), statu ENUM("vacataire","internet","prestataire"), num_banque VARCHAR(50), date_entrée DATE, date_sortie DATE);
+
+question 13
+
+LOAD DATA LOCAL INFILE '/home/amraoui/work-space/passnum/4/personnel.txt' INTO  Table Personnel FIELDS TERMINATED by "\t" LINES TERMINATED by "\n" IGNORE 1 LINES;
+ 
+question 14
+
+CREATE TABLE Etudiant (id_etudiant INT(10)PRIMARY KEY, id_promo INT(10), nom VARCHAR(250), prenom VARCHAR(250), id_secu INT(20), num_banque VARCHAR(50), age INT(10));
+
+question 15
+
+LOAD DATA LOCAL INFILE '/home/amraoui/work-space/passnum/4/etudiant.txt' INTO  Table Etudiant FIELDS TERMINATED by "\t" LINES TERMINATED by "\n" IGNORE 1 LINES;
+
+
 
 
 
