@@ -1,3 +1,9 @@
 question 1
 
 CREATE DATABASE Centrale_Marseille;
+
+question 2
+
+CREATE TABLE Ecole;
+
+
