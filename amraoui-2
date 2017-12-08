@@ -58,6 +58,40 @@ question 15
 
 LOAD DATA LOCAL INFILE '/home/amraoui/work-space/passnum/4/etudiant.txt' INTO  Table Etudiant FIELDS TERMINATED by "\t" LINES TERMINATED by "\n" IGNORE 1 LINES;
 
+question 16
+
+select COUNt(*) from Etudiant;
+
+question 17
+
+select AVG(age) from Etudiant;
+
+question 18
+
+Select Promo.specialite,nom,prenom,annee from Etudiant,Promo where Promo.annee=2017 and Promo.specialite ='Passnum' and Etudiant.id_promo=Promo.id_promo;
+
+
+question 19
+
+select COUNT(id_etudiant)from Etudiant,Promo where Promo.annee=2017 and Etudiant.id_promo=Promo.id_promo;
+
+question 20
+
+select COUNT(id_etudiant)from Etudiant,Promo where Promo.annee=2016 and Etudiant.id_promo=Promo.id_promo;
+
+question 21
+
+select COUNT(id_etudiant)from Etudiant,Promo where Promo.annee=2015 and Etudiant.id_promo=Promo.id_promo;
+
+question 22
+
+CREATE TABLE Service_has_user (id_personnel INT(10), id_service INT(10), role VARCHAR(30));
+
+question 23
+
+LOAD DATA LOCAL INFILE '/home/amraoui/work-space/passnum/4/service_user.txt' INTO  Table Service_has_user FIELDS TERMINATED by "\t" LINES TERMINATED by "\n" IGNORE 1 LINES;
+
+
 
 
 
