@@ -8,3 +8,5 @@
 
 5 - INSERT INTO service (id_ecole, id_service, nom_service) VALUES (1,1,'Informatique'),(1,2,'Enseignement'),(1,3,'Scolarité'),(1,4,'Gestion'),(1,5,'Direction'),(1,6,'RH'),(1,7,'Relation Entreprise'),(1,8,'Recherche');
 
+6 - CREATE TABLE batiment (id_ecole int(10), id_batiment int(10) primary key, nom_batiment varchar(30));
+
