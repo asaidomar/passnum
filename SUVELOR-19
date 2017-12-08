@@ -50,7 +50,7 @@ num_salle VARCHAR(30) NOT NULL, capacite_salle TINYINT(4) NOT NULL, possede_bure
 9 - Insérer les données du fichier salle.txt 
 
 
-LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/salle.txt' into table Salle columns terminated by '\t' ignore 1 lines;
+LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/salle.txt' INTO TABLE Salle COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -134,19 +134,19 @@ LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/service_user.txt' INTO TABLE
 
 
 
-24 - Requete pour lister tout le personnel du service "Informatique"
+24 - Requete pour lister tout le personnel du service "Informatique" (Merci à Kévin)
 
-SELECT nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
-
-
-25 - Requete pour compter le nombre de professeurs
-
-SELECT count(id_personnel) from Service_has_user, Service where Service_has_user.id_service = 2 && Service_has_user.id_service = Service.id_service;
+SELECT nom, prenom, service FROM Personnel, Service_has_user, Service WHERE Service.id_service = Service_has_user.id_service AND Service_has_user.id_personnel = Personel.id_personnel and nom_service = 'Informatique';
 
 
-26 - Requete pour afficher les noms et prenoms de professeur de Mathématiques
+25 - Requete pour compter le nombre de professeurs (Merci à Kévin)
 
-SELECT nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' && Personnel.id_personnel = Service_has_user.id_personnel;			
+SELECT COUNT (id_personnel) FROM Service_has_user, Service WHERE role LIKE "%Professeur%" AND Service_has_user.id_service = 2 AND Service_has_user.id_service = Service.id_service;
+
+
+26 - Requete pour afficher les noms et prenoms de professeur de Mathématiques (Merci à Kévin)
+
+SELECT nom, prenom, role from Personnel, Service_has_user WHERE role = 'Professeur Mathematiques' AND Personnel.id_personnel = Service_has_user.id_personnel;			
 
 
 
