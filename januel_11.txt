@@ -23,3 +23,32 @@
 12 - CREATE TABLE personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(30), prenom varchar(30), id_secu int(20), statut set('Vacataire', 'Interne', 'Prestataire'), num_banque varchar(50), date_entree date, date_sortie date); 
 
 13 - LOAD DATA LOCAL INFILE 'personnel.txt' INTO TABLE personnel COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
+
+14 - CREATE TABLE etudiant (id_etudiant int(10) primary key, id_promo int(10), nom varchar(30), prenom varchar(30), id_secu int(20), num_banque int(50), age int(2));
+
+15 - LOAD DATA LOCAL INFILE 'etudiant.txt' INTO TABLE etudiant COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
+
+16 - SELECT COUNT(id_etudiant) FROM etudiant;
+
+17 - SELECT AVG(age) from etudiant;
+
+18 - SELECT nom, prenom, promo.specialite, annee FROM etudiant, promo WHERE promo.annee=2017 && promo.specialite='passnum' && etudiant.id_promo=promo.id_promo;
+
+19 - SELECT COUNT(id_etudiant) FROM etudiant, promo WHERE promo.annee=2017 && etudiant.id_promo=promo.id_promo;
+
+20 - SELECT COUNT(id_etudiant) FROM etudiant, promo WHERE promo.annee=2016 && etudiant.id_promo=promo.id_promo;
+
+21 - SELECT COUNT(id_etudiant) FROM etudiant, promo WHERE promo.annee=2015 && etudiant.id_promo=promo.id_promo;
+
+22 - CREATE TABLE service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
+
+23 - LOAD DATA LOCAL INFILE 'service_user.txt' INTO TABLE service_has_user COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
+
+24 - SELECT nom, prenom, statut FROM personnel, service, service_has_user WHERE service.id_service=1 && service.id_service=service_has_user.id_service && service_has_user.id_personnel=personnel.id_personnel && nom_service='Informatique';
+
+25 - SELECT COUNT(id_personnel) FROM service_has_user WHERE role LIKE 'Professeur%';
+
+26 - SELECT nom, prenom FROM personnel, service_has_user WHERE service_has_user.role LIKE '%Mathematiques' && service_has_user.id_personnel=personnel.id_personnel;
+
+
+
