@@ -1,5 +1,5 @@
 
-
+1 - Créer la base de données "Centrale_Marseille"
 
 CREATE DATABASE Ecole_entités CHARACTER SET UTF-8;
 
@@ -7,83 +7,113 @@ USE Ecole_entités;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
+2 - Créer la table Ecole 
+
 CREATE TABLE Ecole (id_ecole INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_ecole VARCHAR(30) NOT NULL UNIQUE, 
 directeur VARCHAR(30) NOT NULL);
+
+3 - Insérer une ligne dans la table Ecole  
 
 INSERT INTO Ecole ( nom_ecole, directeur) values ('Centrale Marseille', 'Frederic Fotiadu');
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+4 - Créer la table Service
+
+
 CREATE TABLE Service (id_ecole INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_service INT(10) NOT NULL  UNSIGNED PRIMARY KEY, nom_service VARCHAR(30) NOT NULL UNIQUE);
+
+5 - Créer la requête sql pour inserer les services
+
 
 INSERT INTO Service (nom_service) values ('Informatique'), ('Enseignement'), ('Scolarité'), ('Gestion'), ('Direction'), ('RH'), ('Relation Entreprises'), ('Recherche');
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
+6 - Créer la table Batiment 
 
 CREATE TABLE Batiment (id-ecole INT(10) NOT NULL AUTO_INCREMENT UNSIGNED, id_batiment INT(10) NOT NULL PRIMARY KEY UNSIGNED, nom_batiment VARCHAR(30) NOT NULL);
+
+7 - Créer la requête sql pour inserer les batiments 
 
 INSERT INTO Batiment (nom_batiment) values ('Pythagore'), ('Euclide'), ('Archimède'), ('Copernic'), ('Galilée'), ('Képler'), ('Descartes'), ('Torricelli'), ('Newton'), ('Laplace');
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+8 - Créer la Salle 
+
 CREATE TABLE Salle ( id_batiment INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_salle INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 num_salle VARCHAR(30) NOT NULL, capacite_salle TINYINT(4) NOT NULL, possede_bureau TINYINT(1), possede_tableau TINYINT(1), possede_retro TINYINT(1));
+
+9 - Insérer les données du fichier salle.txt 
+
 
 LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/salle.txt' into table Salle columns terminated by '\t' ignore 1 lines;
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+10 - Créer la table Promo 
+
 
 CREATE TABLE Promo (id_promo int(10) primary key, id_ecole int(10), id_responsable int(10), annee int(4), specialite varchar(50));
+
+11 - Insérer les donnes du fichier promo.txt 
 
 Load data local infile '/home/hacker/workspace/passnum/4/promo.txt' into table Promo columns terminated by '\t' ignore 1 lines;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+12 - Créer la table Personnel 
 
 CREATE TABLE Personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(250), prenom varchar(250), id_secu int(20), status set ('Vacataire', 'Interne', 'Prestataire'), num_banque int(50), date_entree date, date_sortie date);
+
+13 - Insérer les données personnel.txt 
 
 LOAD DATA LOCAL INFILE '/home/hacker/workspace/passnum/4/personnel.txt' into table Personnel columns terminated by '\t' ignore 1 lines;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+14 - Créer la table Etudiant  
+
 
 CREATE TABLE Etudiant (id_etudiant int(10) primary key, id_promo int(10), nom varchar(250), prenom varchar(250), id_secu int(20), num_banque int(50));
+
+15 - Insérer les donnes du fichier etudiant.txt
 
 LOAD DATA LOCAL INFILE '/home/hacker/workspace/passnum/4/etudiant.txt' into table Etudiant columns terminated by '\t' ignore 1 lines;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+16 - Requete pour counter le nombe total d'etudiants 
 
 SELECT count(id_etudiant) as nombre_etudiant from Etudiant;  // lister le nombre d'étudiants (sans distinction)
 
 
-
+17 - Requete pour avoir l'age moyen des etudiants
 
 SELECT avg(age) as age_etudiant from Etudiant;  // voir la moyenne d'âge
 
 
 
+18 - Requete pour lister les élèves de la promo "Passnum 2017"
 
 SELECT Promo.specialite, nom, prenom, annee from Etudiant, Promo where Promo.annee = 2017 && Promo.specialite = 'Passnum' && Etudiant.id_promo = Promo.id_promo;
 
 // selectionner les étudiants d'une promo en particulier
 
-
+19 - Requete pour compter le nombre d'élèves dans les promo 2017
 
 SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2017 && Etudiant.id_promo = Promo.id_promo;
 
-
+20 - Requete pour compter le nombre d'élèves dans les promo 2016
 
 SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2016 && Etudiant.id_promo = Promo.id_promo;
 
-
+21 - Requete pour compter le nombre d'élèves dans les promo 2015
 
 
 SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2015 && Etudiant.id_promo = Promo.id_promo;
@@ -94,24 +124,27 @@ SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
+22 - Créer la table Service_has_user
+
 CREATE TABLE Service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
 
+23 - Insérer les données service_user.txt dans la table Service_has_user  
 
 LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/service_user.txt' INTO TABLE Service_has_user columns terminated by '\t' IGNORE 1 LINES;
 
 
 
-
-//Requete pour lister tout le personnel du service "Informatique"
+24 - Requete pour lister tout le personnel du service "Informatique"
 
 SELECT nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
 
 
+25 - Requete pour compter le nombre de professeurs
 
 SELECT count(id_personnel) from Service_has_user, Service where Service_has_user.id_service = 2 && Service_has_user.id_service = Service.id_service;
 
 
-// Requete pour afficher les noms et prenoms de professeur de Mathématiques
+26 - Requete pour afficher les noms et prenoms de professeur de Mathématiques
 
 SELECT nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' && Personnel.id_personnel = Service_has_user.id_personnel;			
 
