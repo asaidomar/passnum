@@ -1,20 +1,120 @@
 
 
 
-1 - CREATE DATABASE Ecole_entités CHARACTER SET UTF-8;
+CREATE DATABASE Ecole_entités CHARACTER SET UTF-8;
 
 USE Ecole_entités; 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Ecole (id_ecole INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, nom_ecole VARCHAR(30) NOT NULL UNIQUE, 
 directeur VARCHAR(30) NOT NULL);
 
-2 - CREATE TABLE Service (id_ecole INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_service INT(10) NOT NULL  UNSIGNED PRIMARY KEY, nom_service VARCHAR(30) NOT NULL UNIQUE);
+INSERT INTO Ecole ( nom_ecole, directeur) values ('Centrale Marseille', 'Frederic Fotiadu');
 
 
-3- CREATE TABLE Service_has_user (id_personel INT(10) NOT NULL AUTO INCREMENT UNSIGNED, id_service INT(10) NOT NULL UNSIGNED, role VARCHAR(30) NOT NULL);
+------------------------------------------------------------------------------------------------------------------------------------------------
 
-4 - CREATE TABLE Batiment (id-ecole INT(10) NOT NULL AUTO_INCREMENT UNSIGNED, id_batiment INT(10) NOT NULL PRIMARY KEY UNSIGNED, nom_batiment VARCHAR(30) NOT NULL);
+CREATE TABLE Service (id_ecole INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_service INT(10) NOT NULL  UNSIGNED PRIMARY KEY, nom_service VARCHAR(30) NOT NULL UNIQUE);
+
+INSERT INTO Service (nom_service) values ('Informatique'), ('Enseignement'), ('Scolarité'), ('Gestion'), ('Direction'), ('RH'), ('Relation Entreprises'), ('Recherche');
 
 
-5 - CREATE TABLE Salle ( id_batiment INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_salle INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE Service_has_user (id_personel INT(10) NOT NULL AUTO INCREMENT UNSIGNED, id_service INT(10) NOT NULL UNSIGNED, role VARCHAR(30) NOT NULL);
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE Batiment (id-ecole INT(10) NOT NULL AUTO_INCREMENT UNSIGNED, id_batiment INT(10) NOT NULL PRIMARY KEY UNSIGNED, nom_batiment VARCHAR(30) NOT NULL);
+
+INSERT INTO Batiment (nom_batiment) values ('Pythagore'), ('Euclide'), ('Archimède'), ('Copernic'), ('Galilée'), ('Képler'), ('Descartes'), ('Torricelli'), ('Newton'), ('Laplace');
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE Salle ( id_batiment INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_salle INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 num_salle VARCHAR(30) NOT NULL, capacite_salle TINYINT(4) NOT NULL, possede_bureau TINYINT(1), possede_tableau TINYINT(1), possede_retro TINYINT(1));
+
+LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/salle.txt' into table Salle columns terminated by '\t' ignore 1 lines;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE Promo (id_promo int(10) primary key, id_ecole int(10), id_responsable int(10), annee int(4), specialite varchar(50));
+
+Load data local infile '/home/hacker/workspace/passnum/4/promo.txt' into table Promo columns terminated by '\t' ignore 1 lines;
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE Personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(250), prenom varchar(250), id_secu int(20), status set ('Vacataire', 'Interne', 'Prestataire'), num_banque int(50), date_entree date, date_sortie date);
+
+LOAD DATA LOCAL INFILE '/home/hacker/workspace/passnum/4/personnel.txt' into table Personnel columns terminated by '\t' ignore 1 lines;
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE Etudiant (id_etudiant int(10) primary key, id_promo int(10), nom varchar(250), prenom varchar(250), id_secu int(20), num_banque int(50));
+
+LOAD DATA LOCAL INFILE '/home/hacker/workspace/passnum/4/etudiant.txt' into table Etudiant columns terminated by '\t' ignore 1 lines;
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+SELECT count(id_etudiant) as nombre_etudiant from Etudiant;  // lister le nombre d'étudiants (sans distinction)
+
+
+
+
+SELECT avg(age) as age_etudiant from Etudiant;  // voir la moyenne d'âge
+
+
+
+
+SELECT Promo.specialite, nom, prenom, annee from Etudiant, Promo where Promo.annee = 2017 && Promo.specialite = 'Passnum' && Etudiant.id_promo = Promo.id_promo;
+
+// selectionner les étudiants d'une promo en particulier
+
+
+
+SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2017 && Etudiant.id_promo = Promo.id_promo;
+
+
+
+SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2016 && Etudiant.id_promo = Promo.id_promo;
+
+
+
+
+SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo where Promo.annee = 2015 && Etudiant.id_promo = Promo.id_promo;
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE Service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
+
+
+
+
+
+
+
+Load data local infile '/home/hacker/workspace/passnum/4/service_user.txt' into table Service_has_user columns terminated by '\t' ignore 1 lines;
+
+
+Select nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
+
+Select count(id_personnel) from Service_has_user, Service where Service_has_user.id_service = 2 && Service_has_user.id_service = Service.id_service;
+
+Select nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' && Personnel.id_personnel = Service_has_user.id_personnel;
+
+
