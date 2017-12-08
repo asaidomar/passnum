@@ -1,5 +1,5 @@
-question 1: CREATE DATABASE Centrale_Marseille2; 
-
+Question 1: 
+CREATE DATABASE Centrale_Marseille2; 
 USE Centrale_Marseille2; 
 
 Question 2:
@@ -7,10 +7,43 @@ CREATE TABLE Ecole (id_ecole INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,nom_eco
 Question 3:
 INSERT INTO Ecole (nom_ecole, nom_directeur) VALUES (Centrale Marseille,Frédéric Fotiadu);
 
+Question 3:
+INSERT INTO Ecole (nom_ecole, nom_directeur) VALUES ("Centrale Marseille","Frédéric Fotiadu");
 
 Question 4:
 CREATE TABLE Service (id_ecole INT(10), id_service INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, nom_service VARCHAR(30) UNIQUE);
 
 
-question 5:
+Question 5:
 INSERT INTO Service (id_ecole, nom_service) VALUES (1,'Informatique'),(1,'Enseignement'),(1,'Scolarité'),(1,'Gestion'),(1,'Direction'),(1,'RH'),(1,'Relation Entreprises'),(1,'Recherche');
+
+Question 6:
+CREATE TABLE Batiment (id_ecole INT(10), id_batiment INT(10) PRIMARY KEY NOT NULL AUTO_INCREMENT, nom_batiment VARCHAR(30));
+ 
+Question 7:
+INSERT INTO Batiment (id_ecole, nom_batiment) VALUES (1,'Pythagore'), (1,'Euclide'), (1,'Archimède'), (1,'Copernic'), (1,'Galilée'), (1,'Kepler'), (1,'Descartes'), (1,'Torricelli'), (1,'Newton'), 
+(1,'Laplace');
+
+Question 8:
+CREATE TABLE Salle (id_batiment INT(10),id_salle INT(10) PRIMARY KEY NOT NULL, num_salle VARCHAR(30), capacite_salle INT(4), possede_tableau TINYINT(1), possede_retro TINYINT(1));
+
+Question 9:
+LOAD DATA LOCAL INFILE "salle.txt" INTO TABLE salle COLUMNS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+Question 10:
+CREATE TABLE Promo (id_promo INT(10) PRIMARY KEY NOT NULL, id_ecole INT(10), id_responsable INT(10), annee YEAR(4), specialite VARCHAR(50));
+
+Question 11:
+LOAD DATA LOCAL INFILE "promo.txt" INTO TABLE Promo COLUMNS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+Question 12:
+CREATE TABLE Personnel (id_personnel INT(10) PRIMARY KEY NOT NULL, id_responsable INT(10), nom VARCHAR(25), prenom VARCHAR(35), id_secu INT(15), status VARCHAR(50), num_banque INT(22), date_entree DATE, date_sortie DATE);
+
+Question 13:
+LOAD DATA LOCAL INFILE "personnel.txt" INTO TABLE Personnel COLUMNS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+Question 14:
+CREATE TABLE Etudiant (id_etudiant INT(10) PRIMARY KEY NOT NULL, id_promo INT(10), nom VARCHAR(25), prenom VARCHAR(35), id_secu INT(15), num_banque VARCHAR(22), age INT(3));
+
+Question 15:
+LOAD DATA LOCAL INFILE "etudiant.txt" INTO TABLE Etudiant COLUMNS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
