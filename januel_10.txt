@@ -19,3 +19,7 @@
 10 - CREATE TABLE promo (id_promo int(10) primary key, id_ecole int(10), id_reponsable int(10), annee int(4), specialite varchar(50));
 
 11 - LOAD DATA LOCAL INFILE 'promo.txt' INTO TABLE promo COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
+
+12 - CREATE TABLE personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(30), prenom varchar(30), id_secu int(20), statut set('Vacataire', 'Interne', 'Prestataire'), num_banque varchar(50), date_entree date, date_sortie date); 
+
+13 - LOAD DATA LOCAL INFILE 'personnel.txt' INTO TABLE personnel COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
