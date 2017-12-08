@@ -20,12 +20,6 @@ CREATE TABLE Service (id_ecole INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, id_serv
 INSERT INTO Service (nom_service) values ('Informatique'), ('Enseignement'), ('Scolarité'), ('Gestion'), ('Direction'), ('RH'), ('Relation Entreprises'), ('Recherche');
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-CREATE TABLE Service_has_user (id_personel INT(10) NOT NULL AUTO INCREMENT UNSIGNED, id_service INT(10) NOT NULL UNSIGNED, role VARCHAR(30) NOT NULL);
-
-
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE Batiment (id-ecole INT(10) NOT NULL AUTO_INCREMENT UNSIGNED, id_batiment INT(10) NOT NULL PRIMARY KEY UNSIGNED, nom_batiment VARCHAR(30) NOT NULL);
@@ -103,18 +97,23 @@ SELECT COUNT(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo 
 CREATE TABLE Service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
 
 
+LOAD DATA LOCAL INFILE '/home/hacker/Bureau/passnum/service_user.txt' INTO TABLE Service_has_user columns terminated by '\t' IGNORE 1 LINES;
 
 
 
 
+//Requete pour lister tout le personnel du service "Informatique"
 
-Load data local infile '/home/hacker/workspace/passnum/4/service_user.txt' into table Service_has_user columns terminated by '\t' ignore 1 lines;
+SELECT nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
 
 
-Select nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
 
-Select count(id_personnel) from Service_has_user, Service where Service_has_user.id_service = 2 && Service_has_user.id_service = Service.id_service;
+SELECT count(id_personnel) from Service_has_user, Service where Service_has_user.id_service = 2 && Service_has_user.id_service = Service.id_service;
 
-Select nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' && Personnel.id_personnel = Service_has_user.id_personnel;
+
+// Requete pour afficher les noms et prenoms de professeur de Mathématiques
+
+SELECT nom, prenom, role from Personnel, Service_has_user where role = 'Professeur Mathematiques' && Personnel.id_personnel = Service_has_user.id_personnel;			
+
 
 
