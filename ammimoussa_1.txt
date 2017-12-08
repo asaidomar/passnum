@@ -1,2 +1,18 @@
-create database Centrale Marseille;
-use Centrale Marseille;
+1) create database Centrale Marseille;
+ use Centrale Marseille;
+2) create table Ecole (id_ecole int(10) primary key, nom_ecole varchar(30) Not Null Unique, directeur varchar(30));
+3) insert into Ecole
+    -> values (100245, 'Centrale Marseille', 'Frederic Fortiadu');
+4) create table Service (id_ecole int(10), id_service int(10) primary key, nom_service varchar(30) Not Null Unique);
+5) insert into Service (id-ecole, id_service, nom_service)
+   values (25345, 15063, 'informatique'),
+          (25345, 15064, 'enseignemnt'),
+          (25345, 15065, 'scolarité'),
+          (25345, 15066, 'gestion'),
+          (25345, 15067, 'direction'),
+          (25345, 15068, 'RH'),
+          (25345, 15069, 'relation entreprises'),
+          (25345, 15070, 'recherche');
+6) create table Service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
+7) create table  Batiment (id_ecole int(10), id_batiment int(10) primary key,  nom_batiment varchar(30));
+8) insert into Batiment (id_ecole, id_)
