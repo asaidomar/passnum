@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab709
+\pard\pardeftab709\partightenfactor0
+
+\f0\fs24 \cf0 1- CREATE DATABASE Centrale_Marseille\
+\
+2- CREATE TABLE Ecole (id_ecole INT(10) PRIMARY KEY, nom_ecole VARCHAR(30) UNIQUE, directeur VARCHAR(30));\
+\
+3- INSERT INTO ecole(id_ecole, nom_ecole, directeur) VALUE (1, \'93passerelle num\'e9rique\'93,\'a0 \'93\'a0fr\'e9d\'e9ric\'a0\'94)\'a0;\
+\
+4- CREATE TABLE service (id_ecole INT(10), id_service INT(10) PRIMARY KEY, nom_service VARCHAR(30) UNIQUE); \
+\
+5- INSERT INTO service(id_ecole, id_services, nom_service) VALUE (1,1, \'93informatique\'93), (1, 2, \'93enseignement\'93), (1, 3, \'93scolarit\'e9\'93), (1, 4, \'93gestion\'93), (1, 5, \'93direction\'93), (1,6, \'93RH\'93), (1, 7, \'93relation entreprise\'93), (1, 8, \'93recherche\'93)\'a0;\
+\
+6- CREATE TABLE Batiment (id_ecole INT(10), id_batiment INT(10) PRIMARY KEY, nom_batiment VARCHAR(30));\
+\
+7- INSERT INTO batiment(id_ecole, id_batiment, nom_batiment) VALUE (1,1, \'93Pythagore\'93), (1,     2, \'93Euclide\'93), (1, 3, \'93Archim\'e8ne\'93), (1, 4, \'93Copernic\'93), (1, 5, \'93Galile\'93), (1,6, \'93Kepler\'93) (1, 7, \'93Descartes\'93), (1, 8, \'93Torriceli\'93), (1, 9, \'93Newton\'93) (1, 10, Laplace)\'a0;\
+\
+8- CREATE TABLE Salle (id_batiment INT(10), id_salle INT(10) PRIMARY KEY, num_salle   VARCHAR(30), capacite_salle INT(4), possede_tableaux INT(1) BOOLEAN, possede_retro INT(1) BOOLEAN);\
+\
+9- LOAD DATA INFILE \'93/desktop/salle.txt\'93\'a0,\
+    INTO TABLE salle,\
+    LINES TERMINATED BY \'91\\n\'92,\
+    ESCAPE BY \'91 \'93 \'92,\
+    IGNORE 1 LINES\'a0;\
+\
+10-CREATE TABLE promo (id_promo INT(10) PRIMARY KEY, id_ecole VARCHAR(10), id_responsable INT(10), annee INT(4), specialite VARCHAR(50) nom_service VARCHAR(50));\
+\
+11-  LOAD DATA INFILE \'93/desktop/promo.txt\'93,\'a0\
+    INTO TABLE promo,\
+    LINES TERMINATED BY \'91\\n\'92,\
+    ESCAPE BY \'91 \'93 \'92,\
+    IGNORE 1 LINES\'a0;\
+\
+12- CREATE TABLE Personnel(id_personnel INT(10), PRIMARY KEY, id_responsable INT(10), nom VARCHAR(250), prenom VARCHAR(250), id_secu INT(20), status SET("vocataire","Interne","Prestataire"), num_banque VARCHAR(50), date_entree DATE, date_sortie DATE);\
+\
+13-  LOAD DATA INFILE \'93/desktop/personnel.txt,\
+    INTO TABLE personnel,\
+    LINES TERMINATED BY \'91\\n\'92,\
+    ESCAPE BY \'91 \'93 \'92,\
+    IGNORE 1 LINES\'a0;\
+14- CREATE TABLE Etudiant(id_etudiant INT(10) PRIMERY KEY, id_promo INT(10), nom VARCHAR(250), prenom VARCHAR(250), id_secu INT(20), num_banque VARCHAR(50));\
+\
+15-  LOAD DATA INFILE \'93/desktop/etudiant.txt,\
+    INTO TABLE etudiant,\
+    LINES TERMINATED BY \'91\\n\'92,\
+    ESCAPE BY \'91 \'93 \'92,\
+    IGNORE 1 LINES\'a0;\
+\
+16-SELECT COUNT (id_etudiant) FROM Etudiant;\
+\
+17-SELECT AVG (age) FROM Etudiant;\
+\
+18-SELECT [*] FROM Etudiant,Promo.id_promo AND annee = 2017 AND specialite = passnum;\
+\
+19-SELECT COUNT (id_etudiant) FROM Etudiant, Promo WHERE Etudiant.id_promo = Promo.id_promo AND annee = 2017\'a0;\
+\
+20-SELECT COUNT (id_etudiant) FROM Etudiant, Promo WHERE Etudiant.id_promo = Promo.id_promo AND annee = 2016\'a0;\
+\
+21-SELECT COUNT (id_etudiant) FROM Etudiant, Promo WHERE Etudiant.id_promo = Promo.id_promo AND annee = 2015\'a0;\
+\
+22- CREATE TABLE Service_has_user(id_personnel INT(10), id_service INT(10), role VARCHAR(30);\
+\
+23-LOAD DATA [LOCAL] INFILE 'passnum/4/service_has_user.txt' INTO TABLE Service_has_user\
+  [FIELDS\
+    [TERMINATED BY '\\t']\
+  ]\
+  [LINES\
+    [TERMINATED BY '\\n']\
+  ]\
+  [IGNORE 1 LINES]\
+\
+24-SELECT nom, prenom, service FROM Personnel, Service_has_user, ServiceWHERE Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';\
+\
+25- SELECT COUNT(id_personnel) FROM service_has_user, service where Service_has_user.id_service = 2 AND Service_has_user.id_service = Service.id_service;\
+\
+26-SELECT nom, prenom FROM Personnel, Service_has_user WHERE role = 'Professeur Mathematiques' AND Personnel.id_personnel = Service_has_user.id_personnel;}
