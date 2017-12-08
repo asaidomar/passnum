@@ -10,6 +10,10 @@ question 3
 
 INSERT INTO  Ecole (id_ecole,nom_ecole,directeur) VALUES (2,"centrale marseille","frederic fatiadu");
 
+question 4
+
+CREATE TABLE Service (id_ecole INT(10), id_service INT(10)PRIMARY KEY, nom_service VARCHAR(30)UNIQUE);
+
 
 
 
