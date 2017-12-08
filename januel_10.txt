@@ -14,4 +14,6 @@
 
 8 - CREATE TABLE salle (id_batiment int(10), id_salle int(10) primary key, num_salle varchar(30), capacite_salle int(4), possede_tableau int(1), possede_retro int(1));
 
+9 - LOAD DATA LOCAL INFILE 'salle.txt' INTO TABLE salle COLUMNS TERMINATED BY '\t' IGNORE 1 LINES;
+
 
