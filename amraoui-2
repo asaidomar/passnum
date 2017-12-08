@@ -26,5 +26,16 @@ question 7
 
 INSERT INTO Batiment (id_ecole,id_batiment,nom_batiment) VALUES (2,1,"Pythagore"),(2,2,"Euclide"),(2,3,"Archimede"),(2,4,"Copernic"),(2,5,"Galilée"),(2,6,"Kepler"),(2,7,"Descartes"),(2,8,"Torricelli"),(2,9,"Newton"),(2,10,"Laplace");
 
+question 8
+
+CREATE TABLE Salle (id_batiment INT(10), id_salle INT(10), num_salle VARCHAR(30), capacite_salle INT(4), possede_tableau INT(1)NOT NULL, possede_retro INT(1)NOT NULL);
+
+question 9
+
+LOAD DATA LOCAL INFILE '/home/amraoui/work-space/passnum/4/salle.txt' INTO  Table Salle FIELDS TERMINATED by "\t" LINES TERMINATED by "\n" IGNORE 1 LINES;
+
+
+
+
 
 
