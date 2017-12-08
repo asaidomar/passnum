@@ -72,3 +72,73 @@ ignore 1 lines;
 Question 10:
 
 create table promo ( id_promo int (10) primary key , id_ecole int (10) , id_responsable int (10) , annee int (4) , specialite varchar (50));
+
+
+Question 11:
+
+load data local infile '/home/dali/workspace/passnum/4/promo.txt' into table promo fields terminated by '\t'  lines  terminated by '\n' ignore 1 lines;
+
+Question 12:
+
+create table personnel (id_personnel int (10) primary key , id_responsable int (10) , nom varchar (250) , prenom varchar (250) , id_secu int (20) , status Set ( vacataire , interne , prestataire) , num_banque varchar (50) , date_entree DATE , date_sortie DATE);
+
+Question 13:
+
+load data local infile '/home/dali/workspace/passnum/4/personnel.txt' into table personnel fields terminated by '\t'  lines  terminated by '\n' ignore 1 lines;
+
+
+Question 14:
+
+create table etudiant (id_etudiant int (10) primary key , id_promo int (10) , nom varchar (250) , prenom varchar (250) , id_secu int (20) , num_banque varchar (50) , age int (2));
+
+Question 15:
+
+ load data local infile '/home/dali/workspace/passnum/4/etudiant.txt' into table etudiant fields terminated by '\t'  lines  terminated by '\n' ignore 1 lines; 
+
+Question 16:
+
+select count(id_etudiant) from etudiant;
+
+Question 17:
+
+select AVG(age) from etudiant;
+
+
+Question 18:
+
+Select promo.specialite, nom, prenom, annee from etudiant, promo where promo.annee = 2017 and promo.specialite = 'passnum' and etudiant.id_promo = promo.id_promo;
+
+Question 19:
+
+select count(id_etudiant) from etudiant , promo where promo.annee = 2017 and etudiant.id_promo = promo.id_promo;
+
+Question 20:
+
+select count(id_etudiant) from etudiant , promo where promo.annee = 2016 and etudiant.id_promo = promo.id_promo;
+
+Question 21:
+
+select count(id_etudiant) from etudiant , promo where promo.annee = 2015 and etudiant.id_promo = promo.id_promo;
+
+Question 22:
+
+create table service_has_user (id_personnel int (10) , id_service int (10) , role varchar (30)); 
+
+
+Question 23:
+
+load data local infile '/home/dali/workspace/passnum/4/service_user.txt' into table service_has_user fields terminated by '\t'  lines  terminated by '\n' ignore 1 lines;
+
+Question 24:
+
+select nom, prenom, nom_service from personnel, service_has_user, service where service.id_service = service_has_user.id_service and service_has_user.id_personnel = personnel.id_personnel and nom_service = 'informatique';
+
+Question 25:
+
+select count(id_personnel) from service_has_user, service where service_has_user.id_service = 2 and service_has_user.id_service = service.id_service;
+
+Question 26:
+
+select nom, prenom, role from personnel, service_has_user where role = 'Professeur Mathematiques' and personnel.id_personnel = service_has_user.id_personnel;
+
+
