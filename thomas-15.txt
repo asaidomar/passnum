@@ -14,19 +14,19 @@ Insert into Batiment (nom_batiment) values ('Pythagore'), ('Euclide'), ('Archim√
 
 Create table Salle (id_batiment int(10), id_salle int(10) primary key, num_salle varchar(30), capacite_salle int(4), possede_tableau int(1), possede_retro int(1));
 
-Load data local infile '/home/hacker/workspace/passnum/4/salle.txt' into table Salle columns terminated by '\t' ignore 1 lines;
+Load data local infile '/home/workspace/passnum/4/salle.txt' into table Salle columns terminated by '\t' ignore 1 lines;
 
 Create table Promo (id_promo int(10) primary key, id_ecole int(10), id_responsable int(10), annee int(4), specialite varchar(50));
 
-Load data local infile '/home/hacker/workspace/passnum/4/promo.txt' into table Promo columns terminated by '\t' ignore 1 lines;
+Load data local infile '/home/workspace/passnum/4/promo.txt' into table Promo columns terminated by '\t' ignore 1 lines;
 
 Create table Personnel (id_personnel int(10) primary key, id_responsable int(10), nom varchar(250), prenom varchar(250), id_secu int(20), status set ('Vacataire', 'Interne', 'Prestataire'), num_banque int(50), date_entree date, date_sortie date);
 
-Load data local infile '/home/hacker/workspace/passnum/4/personnel.txt' into table Personnel columns terminated by '\t' ignore 1 lines;
+Load data local infile '/home/workspace/passnum/4/personnel.txt' into table Personnel columns terminated by '\t' ignore 1 lines;
 
 Create table Etudiant (id_etudiant int(10) primary key, id_promo int(10), nom varchar(250), prenom varchar(250), id_secu int(20), num_banque int(50));
 
-Load data local infile '/home/hacker/workspace/passnum/4/etudiant.txt' into table Etudiant columns terminated by '\t' ignore 1 lines;
+Load data local infile '/home/workspace/passnum/4/etudiant.txt' into table Etudiant columns terminated by '\t' ignore 1 lines;
 
 Select count(id_etudiant) as nombre_etudiant from Etudiant;
 
@@ -42,7 +42,7 @@ Select count(id_etudiant) as nombre_etudiant from Etudiant from Etudiant, Promo 
 
 Create table Service_has_user (id_personnel int(10), id_service int(10), role varchar(30));
 
-Load data local infile '/home/hacker/workspace/passnum/4/service_user.txt' into table Service_has_user columns terminated by '\t' ignore 1 lines;
+Load data local infile '/home/workspace/passnum/4/service_user.txt' into table Service_has_user columns terminated by '\t' ignore 1 lines;
 
 Select nom, prenom, service from Personnel, Service_has_user, Service where Service.id_service = Service_has_user.id_service && Service_has_user.id_personnel = Personel.id_personnel && nom_service = 'Informatique';
 
