@@ -25,4 +25,8 @@ CRETE TABLE Salle (id_batiment INT(10), id_salle INT(10) PRIMARY KEY, num_salle 
 Question 9:
 LOAD DATA LOCAL INFILE "/media/kirill/EMTEC B250/cours/cours_Ali/4/salle.txt" INTO TABLE Salle FIELDS TERMINATED BY "\t"  LINES  TERMINATED BY "\n" IGNORE 1 LINES;
 
+Question 10:
+CREATE TABLE Promo (id_promo INT(10) PRIMARY KEY, id_ecole INT(4), specialite VARCHAR(50));
 
+Question 11:
+LOAD DATA LOCAL INFILE "/media/kirill/EMTEC B250/cours/cours_Ali/4/promo.txt" INTO TABLE Promo FIELDS TERMINATED BY "\t"  LINES  TERMINATED BY "\n" IGNORE 1 LINES;
