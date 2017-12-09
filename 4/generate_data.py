@@ -111,12 +111,14 @@ Shanti Saucier"""
 def generate_room():
     with open("salle.txt", "w") as fout:
         print("id_batiment\tid_salle\tnum_salle\tcapacite_salle\tpossede_tableau\tpossede_retro", file=fout)
+        i = 0
         for id_bat in range(1, 10):
             for id_salle in range(1, 30):
+                i += 1
                 capacite_salle = random.randint(30, 300)
                 has_board = random.choice([0, 1])
                 has_proj = random.choice([0, 1])
-                print( "%s\t%s\t%s\t%s\t%s\t%s" % (id_bat, id_salle, id_salle, capacite_salle, has_board, has_proj), file=fout)
+                print( "%s\t%s\t%s\t%s\t%s\t%s" % (id_bat, i, i, capacite_salle, has_board, has_proj), file=fout)
 
 def generate_promo():
     id_promos = []
