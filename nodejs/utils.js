@@ -1,32 +1,20 @@
 const url = require("url");
 const fs = require('fs');
-const mysql = require('mysql');
 
-var con;
+const queryString = require('querystring');
+
+const con = require("./db.js");
 
 
-function init_sql(){
-    con = mysql.createConnection({
-      host: "localhost",
-      user: "yourusername",
-      password: "yourpassword",
-      database: "mydb",
-    });
 
-    return con
-
-}
 
 
 function run_query(con, query_str, req, res, callback) {
-    con.connect(function (err) {
-        con.query(query_str, function (err, result, fields) {
-            if (err) throw err;
-            console.log(result);
-            if (callback) {
-                callback(result, req, res);
-            }
-        });
+    con.query(query_str, function (err, result, fields) {
+        console.log(result);
+        if (callback) {
+            callback(result, req, res);
+        }
     });
 }
 
@@ -53,6 +41,7 @@ function handler_register(result, req, res){
 function challenge_login(req, res, username, password){
     var hashed_password = get_hash(password);
     var query_str = `select * from User where username="${username}" AND password="${hashed_password}"`;
+    console.log(query_str);
     return run_query(con, query_str, req, res, handler_login_result)
 
 }
@@ -68,7 +57,19 @@ function regsiter(req, res, username, password){
 function login(req, res){
     var login_form = fs.readFileSync("./html/login.html");
 
-    if (req.method === "post"){
+    console.log(req.method);
+    if (req.method === "POST"){
+        var body = [];
+        req.on('data', function(chunk) {
+          body.push(chunk);
+        }).on('end', function(){
+            body = Buffer.concat(body).toString();
+            // at this point, `body` has the entire request body stored in it as a string
+
+            var body_obj = queryString.parse(body);
+            console.log(body_obj);
+            challenge_login(req, res, body_obj.login, body_obj.password);
+        });
 
     }else{
 
@@ -77,7 +78,6 @@ function login(req, res){
 
 }
 
-init_sql();
 
 module.exports = {
     hello: function (req, res) {
