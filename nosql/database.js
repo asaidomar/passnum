@@ -32,7 +32,7 @@ function populate_redis(N ) {
 
 function populate_db(N, callback) {
 
-
+    console.log(`populate ${N} persons`);
     for (var i = 0; i< N; i++){
         var personne = {
             name: "personnes " + i,
@@ -56,13 +56,8 @@ function load(filename) {
 
 function dump(obj) {
     var json_obj = JSON.stringify(obj);
-
-    fs.writeFile(filename, json_obj, 'utf8', function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log("The file was saved!");
-    });
+    fs.writeFileSync(filename, json_obj);
+    console.log("The file was saved!");
 }
 
 
@@ -82,14 +77,15 @@ function filter(name, address, phone) {
     var obj = JSON.parse(content);
 
     for (var p in obj){
+
         if (name){
-            if (p.indexOf(name)){
+            if (p.indexOf(name) > 1){
                 result[p] = obj[p]
             }
         }
         
         if (address){
-            if (obj[p].address.indexOf(address)){
+            if (obj[p].address.indexOf(address) > 1){
                 result[p] = obj[p]
             }            
         }
@@ -117,10 +113,11 @@ function main() {
     args.shift(); //node
     args.shift(); // script name
 
-    console.log(args);
+    console.log("argument ", args);
 
     if (args[0] === "populate"){
-        populate_db(N, dump)
+        var n = parseInt(args[1]);
+        populate_db(n || N, dump)
     }else if(args[0] === "get"){
         var key = args[1];
         console.log(get(key))
