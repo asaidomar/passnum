@@ -9,6 +9,8 @@ const CONST = require("./const.js");
 
 connected_user = [];
 
+var connected_username;
+
 
 //recuperer la date
 function getDateTime() {
@@ -40,11 +42,9 @@ function getDateTime() {
 function insert_name(name, res){
     con.connect(function(err) {
       //if (err) throw err;
-      console.log("Connected!");
       var sql = "INSERT INTO Stats (username, connection_date) VALUES ('"+name+"', '"+getDateTime()+"')";
       con.query(sql, function (err, result) {
         //if (err) throw err;
-        console.log(name + " inserted");
          res.end(name + " inserted");
       });
     });
@@ -133,6 +133,7 @@ function handler_login_result(result, req, res){
         res.end();
     }else{
         req.username.connected = false;
+        connected_username = undefined;
         res.end("Login not OK")
     }
 }
@@ -145,6 +146,7 @@ function handler_register(result, req, res){
         res.writeHead(302, {Location: "/"});
         res.end();
     }else{
+        connected_username = undefined
         res.end("Not able to register")
     }
 }
@@ -155,6 +157,7 @@ function challenge_login(req, res, username, password){
     console.log(query_str);
 
     req.username = {};
+    connected_username = username;
     return run_query(con, query_str, req, res, handler_login_result)
 
 }
@@ -163,6 +166,7 @@ function challenge_login(req, res, username, password){
 function challenge_register(req, res, username, password){
     var hashed_password = get_hash(password);
     var query_str = `insert into User (username, password) VALUE ('${username}', '${hashed_password}')`;
+    connected_username = username;
     return run_query(con, query_str, req, res, handler_register)
 }
 
@@ -193,9 +197,11 @@ function register(req, res) {
 
 
 function handler_stats(results, req, res){
+    res.writeHead(200, {'Content-Type': 'text/html'});
     var result_str = "<ul>";
     for (var i =0; i<results.length; i++){
-        result_str += `<li> user ${results["username"]}, date ${results["connection_date"]} </li> `
+        console.log(results[i]);
+        result_str += `<li> user ${results[i]["username"]}, date ${results[i]["connection_date"]} </li> `
     }
 
     res.end(result_str)
@@ -213,8 +219,8 @@ function insert_stat() {
 }
 
 function home(req, res) {
-    if (req.username.connected){
-        insert_name(req.username.name, res)
+    if (connected_username){
+        insert_name(connected_username, res)
     }else{
         res.writeHead(302, {Location: "/login/"});
         res.end();
