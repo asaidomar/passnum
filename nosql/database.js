@@ -1,16 +1,45 @@
 const  N = 1000;
 const fs = require("fs");
 const redis = require("redis");
+const Mongo = require('mongodb');
+
+const mongo_collection = "addresses";
+
+const filename = "db.json";
+
+var addresses_book = {};
+var dbo = {};
+
 
 client = redis.createClient();
 
 
 
-const filename = "db.json";
+var MongoClient = Mongo.MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  dbo = db.db("mydb");
+});
 
 
-var addresses_book = {};
+function populate_mongo(N) {
 
+    for (var i = 0; i < N; i++) {
+        var personne = {
+            name: "personnes " + i,
+            address: i + " rue no man land, 13013 Marseille",
+            phone: "063435677 " + i
+        };
+
+        dbo.collection(mongo_collection).insertOne(personne, function (err, res) {
+            if (err) throw err;
+            console.log("1 document inserted");
+
+        });
+    }
+}
 
 
 function populate_redis(N ) {
@@ -49,10 +78,6 @@ function populate_db(N, callback) {
 
 }
 
-
-function load(filename) {
-
-}
 
 function dump(obj) {
     var json_obj = JSON.stringify(obj);
@@ -136,6 +161,12 @@ function main() {
             var key = args[2];
             redis_get(key)
         }
+    }else if (args[0] === "mongo"){
+        var action = args[1];
+        if (action === "populate"){
+            return populate_mongo(N)
+        }
+
     }
 
     process.exit()
