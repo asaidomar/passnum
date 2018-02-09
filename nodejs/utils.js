@@ -214,9 +214,6 @@ function stats(req, res) {
     run_query(con, query_str, req, res, handler_stats)
 }
 
-function insert_stat() {
-    
-}
 
 function home(req, res) {
     if (connected_username){
