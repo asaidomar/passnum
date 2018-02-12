@@ -1,18 +1,21 @@
+"use strict";
+
 const url = require("url");
 const fs = require('fs');
-
 const queryString = require('querystring');
 
+// import des module locaux (relatif au script courant)
 const con = require("./db.js");
 const CONST = require("./const.js");
 
 
-connected_user = [];
-
 var connected_username;
 
 
-//recuperer la date
+/**
+ * Renvoie sous forme de string la date.
+ * @returns {string}
+ */
 function getDateTime() {
 
    var date = new Date();
@@ -38,7 +41,11 @@ function getDateTime() {
 
 }
 
-
+/**
+ * Insert la line (name, date) dans la table Stats et renvoie au client (navigateur) le nom inséré en base
+ * @param name: nom de l'utilisateur
+ * @param res: HTTP request
+ */
 function insert_name(name, res){
     con.connect(function(err) {
       //if (err) throw err;
@@ -52,6 +59,14 @@ function insert_name(name, res){
 
 }
 
+/**
+ * Fonction helper qui permet de d'éxécuter des requêtes SQL et de lancer `callaback`
+ * @param con, mysql connection
+ * @param query_str, requete sql à jouer
+ * @param req, http request
+ * @param res, http response
+ * @param callback
+ */
 function run_query(con, query_str, req, res, callback) {
     console.log("query to be run");
     console.log(query_str);
@@ -63,7 +78,12 @@ function run_query(con, query_str, req, res, callback) {
     });
 }
 
-
+/**
+ * Shift de `shift_value` (entier)
+ * @param c, charactere à shifter (a, 1, etc)
+ * @param shift_value, entier correspondant au décalage à réaliser
+ * @returns {*}
+ */
 function shift_character(c, shift_value) {
     var upper = false;
     console.log("enter");
@@ -101,35 +121,56 @@ function shift_character(c, shift_value) {
 
 }
 
+/**
+ * Retourne le hash du mot de passe
+ * @param string_password, mot de passe originale
+ * @param shift, valeur entière du shift à réaliser
+ * @param repeat_value
+ * @returns {string}, nombre de répétition
+ */
 function get_hash(string_password, shift, repeat_value){
 
+    // valeurs par default
     shift = shift || CONST.shift;
     repeat_value = repeat_value || CONST.repeat;
+
     var tab_character = [];
 
+    // on insère la valeur décalée
     for (var i = 0; i <  string_password.length; i++){
         tab_character.push(shift_character(string_password[i], shift))
     }
 
+    // on génère à nouveau la chaine de charactère
     var shifted_passward =  tab_character.join("");
 
+    // tableau contenant le résultat finale
     var tab_result = [];
     tab_result.push(shift);
     tab_result.push(repeat_value);
 
+    // on répète le mot de passe décalé repeat_value fois
     for (var j= 0; j < repeat_value; j++){
         tab_result.push(shifted_passward)
 
     }
 
+    // chaine de charactère finale
     return tab_result.join("")
 }
 
 
+/**
+ * callback de la fonction `challenge_login` si `result` (résultat de la requête SQL) contient >= une ligne, le user
+ * est connu dans le cas contraite on renvoie la chaine "Login not OK"
+ * @param result, resultat de la requete SQL
+ * @param req, http request
+ * @param res, http response
+ */
 function handler_login_result(result, req, res){
     if (result.length >= 1){
-        req.username.connected = true;
-        res.writeHead(302, {Location: "/"});
+        req.username.connected = true;  // on flague l'utilisateur comme connecté
+        res.writeHead(302, {Location: "/"}); // redirection
         res.end();
     }else{
         req.username.connected = false;
@@ -138,6 +179,12 @@ function handler_login_result(result, req, res){
     }
 }
 
+/**
+ * callback de la fonction register
+ * @param result
+ * @param req
+ * @param res
+ */
 function handler_register(result, req, res){
     console.log("result");
     console.log(result);
@@ -151,6 +198,14 @@ function handler_register(result, req, res){
     }
 }
 
+
+/**
+ * fait une requête sql pour voir si un user est connu et on lance la callback `handler_login_result`
+ * @param req
+ * @param res
+ * @param username
+ * @param password
+ */
 function challenge_login(req, res, username, password){
     var hashed_password = get_hash(password);
     var query_str = `select * from User where username="${username}" AND password="${hashed_password}"`;
@@ -162,7 +217,13 @@ function challenge_login(req, res, username, password){
 
 }
 
-
+/**
+ *
+ * @param req
+ * @param res
+ * @param username
+ * @param password
+ */
 function challenge_register(req, res, username, password){
     var hashed_password = get_hash(password);
     var query_str = `insert into User (username, password) VALUE ('${username}', '${hashed_password}')`;
@@ -170,7 +231,11 @@ function challenge_register(req, res, username, password){
     return run_query(con, query_str, req, res, handler_register)
 }
 
-
+/**
+ *
+ * @param req
+ * @param res
+ */
 function register(req, res) {
     var register_form = fs.readFileSync("./html/register.html");
 
@@ -195,7 +260,12 @@ function register(req, res) {
 
 }
 
-
+/**
+ *
+ * @param results
+ * @param req
+ * @param res
+ */
 function handler_stats(results, req, res){
     res.writeHead(200, {'Content-Type': 'text/html'});
     var result_str = "<ul>";
@@ -208,13 +278,21 @@ function handler_stats(results, req, res){
 
 }
 
-
+/**
+ *
+ * @param req
+ * @param res
+ */
 function stats(req, res) {
     var query_str = "select * from Stats";
     run_query(con, query_str, req, res, handler_stats)
 }
 
-
+/**
+ *
+ * @param req
+ * @param res
+ */
 function home(req, res) {
     if (connected_username){
         insert_name(connected_username, res)
@@ -225,21 +303,31 @@ function home(req, res) {
 
 }
 
-
+/**
+ * fonction qui gère le login de l'utilisateur
+ * @param req, objet request
+ * @param res onjet response
+ */
 function login(req, res){
+
+    // on lit le contenu du fichier './html/login.html' en synchrone
     var login_form = fs.readFileSync("./html/login.html");
 
     console.log(req.method);
     if (req.method === "POST"){
         var body = [];
+        // on commence à recevoir la requête depuis le navigateur
         req.on('data', function(chunk) {
           body.push(chunk);
+        // le navigateur à envoyé tout le contenu du formulaire
         }).on('end', function(){
-            body = Buffer.concat(body).toString();
             // at this point, `body` has the entire request body stored in it as a string
+            body = Buffer.concat(body).toString();
 
+            // on parse le contenu de body qui peut être de la forme
             var body_obj = queryString.parse(body);
             console.log(body_obj);
+
             challenge_login(req, res, body_obj.login, body_obj.password);
         });
 
@@ -250,7 +338,8 @@ function login(req, res){
 
 }
 
-
+// on export un objet anonyme qui possède en clef `hello`, `dispatch`...
+// à noter que la valeur d'une clef peut etre une fonction, un type primitif ou un autre objet
 module.exports = {
     hello: function (req, res) {
 
@@ -264,17 +353,17 @@ module.exports = {
         }
     },
 
-
+    // fonction de dispatch en fonction de l'url demandé
     dispatch: function (req, res) {
         req.username = {};
-        if (req.url.indexOf("login") > 0){
+        if (req.url.indexOf("login") > 0){ // /login
             login(req, res)
-        }else if (req.url.indexOf("register") > 0){
+        }else if (req.url.indexOf("register") > 0){ // /register
             register(req, res)
-        }else if (req.url.indexOf("stats") > 0){
+        }else if (req.url.indexOf("stats") > 0){ // /stats
             stats(req, res)
 
-        }else{
+        }else{  // default, les autres url
             home(req, res)
         }
 

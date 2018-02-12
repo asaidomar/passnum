@@ -13,8 +13,6 @@ var dbo = {};
 
 client = redis.createClient();
 
-
-
 var MongoClient = Mongo.MongoClient;
 var url = "mongodb://localhost:27017/";
 
