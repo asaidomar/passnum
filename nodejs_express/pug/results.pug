@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  head
+    block head
+      meta(charset='utf-8')
+      title Pass Num login
+      link(href='//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css', rel='stylesheet')
+
+  body
+    block scripts
+    block body
+      h2 Home
+      div.container
+      table.table-bordered
+        thead
+          tr
+           th user
+           th Connnection Date
+        tbody
+          each user, i in results
+            tr
+              td #{user.username}
+              td #{user.connection_date}
+    br
+
+    p
+      a(href="/export") export the result
