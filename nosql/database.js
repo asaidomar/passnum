@@ -1,49 +1,97 @@
 const  N = 1000;
 const fs = require("fs");
 const redis = require("redis");
-const Mongo = require('mongodb');
+var Db = require('mongodb').Db,
+    MongoClient = require('mongodb').MongoClient,
+    Server = require('mongodb').Server;
+
 
 const mongo_collection = "addresses";
 
 const filename = "db.json";
 
 var addresses_book = {};
-var dbo = {};
+var dbo;
 
 
 client = redis.createClient();
 
-var MongoClient = Mongo.MongoClient;
 var url = "mongodb://localhost:27017/";
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  dbo = db.db("mydb");
-});
+
+function filter_mongo(attr, value) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        var filter = {};
+        filter[attr] = {$regex : `.*${value}.*`};
+        console.log(filter);
+        dbo.collection(mongo_collection).find(filter).toArray(function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            db.close();
+        });
+
+    });
+
+}
 
 
-function populate_mongo(N) {
+function populate_mongo2(N){
 
+    var addresses = [];
     for (var i = 0; i < N; i++) {
         var personne = {
-            name: "personnes " + i,
+            name: "personne "  + i,
             address: i + " rue no man land, 13013 Marseille",
             phone: "063435677 " + i
         };
+        addresses.push(personne);
+    }
 
-        dbo.collection(mongo_collection).insertOne(personne, function (err, res) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        dbo.collection(mongo_collection).insertMany(addresses, function (err, res) {
             if (err) throw err;
-            console.log("1 document inserted");
+            console.log(N + "documents inserted");
 
         });
-    }
+        db.close();
+
+    });
+}
+
+function populate_mongo(N) {
+
+    return MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+
+        for (var i = 0; i < N; i++) {
+            var personne = {
+                name: "personne "  + i,
+                address: i + " rue no man land, 13013 Marseille",
+                phone: "063435677 " + i
+            };
+
+            dbo.collection(mongo_collection).insertOne(personne, function (err, res) {
+                if (err) throw err;
+                console.log("1 document inserted");
+
+            });
+        }
+
+        db.close();
+
+    });
 }
 
 
 function populate_redis(N ) {
     for (var i = 0; i< N; i++){
         var personne = {
-            name: "personnes " + i,
+            name: "personne "  + i,
             address: i + " rue no man land, 13013 Marseille",
             phone: "063435677 " + i
         };
@@ -62,7 +110,7 @@ function populate_db(N, callback) {
     console.log(`populate ${N} persons`);
     for (var i = 0; i< N; i++){
         var personne = {
-            name: "personnes " + i,
+            name: "personne "  + i,
             address: i + " rue no man land, 13013 Marseille",
             phone: "063435677 " + i
         };
@@ -150,9 +198,10 @@ function main() {
         console.log(filter(key))
     }else if (args[0] === "redis"){
         var action = args[1];
-
         if (action === "populate"){
-            return populate_redis(N)
+            var n = parseInt(args[2]);
+
+            return populate_redis(n || N)
         }
 
         if (action === "get"){
@@ -162,12 +211,21 @@ function main() {
     }else if (args[0] === "mongo"){
         var action = args[1];
         if (action === "populate"){
-            return populate_mongo(N)
+            var n = parseInt(args[2]);
+            return populate_mongo(n || N)
+        }
+        if (action === "populate2"){
+            var n = parseInt(args[2]);
+            return populate_mongo2(n || N)
+        }
+        if (action === "filter"){
+            var attr = args[2];
+            var value = args[3];
+            filter_mongo(attr, value)
         }
 
     }
 
-    process.exit()
 
 }
 
