@@ -1,15 +1,25 @@
 "use strict";
 
+
+/**
+ *  IMPORTS
+ */
 const url = require("url");
 const fs = require('fs');
 const queryString = require('querystring');
+const path = require('path');
 
 // import des module locaux (relatif au script courant)
 const con = require("./db.js");
 const CONST = require("./const.js");
 
+var connected_username;  // flag savoir si le user a réussi la connection
 
-var connected_username;
+
+
+/***
+ *  FUNCTIONS
+ */
 
 
 /**
@@ -42,25 +52,25 @@ function getDateTime() {
 }
 
 /**
- * Insert la line (name, date) dans la table Stats et renvoie au client (navigateur) le nom inséré en base
+ * Insert la ligne (name, date) dans la table Stats et renvoie au client (navigateur) le nom inséré en base
  * @param name: nom de l'utilisateur
  * @param res: HTTP request
  */
-function insert_name(name, res){
-    con.connect(function(err) {
-      //if (err) throw err;
-      var sql = "INSERT INTO Stats (username, connection_date) VALUES ('"+name+"', '"+getDateTime()+"')";
-      con.query(sql, function (err, result) {
+function insert_name(name, res) {
+    con.connect(function (err) {
         //if (err) throw err;
-         res.end(name + " inserted");
-      });
+        var sql = "INSERT INTO Stats (username, connection_date) VALUES ('" + name + "', '" + getDateTime() + "')";
+        con.query(sql, function (err, result) {
+            //if (err) throw err;
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(`Hello <font style="font-weight: bold"> ${name} </font>, <br /> Welcome to the first passnum nodejs applicacation! <a href="/stats/" > To see the stats</a>`);
+        });
     });
-
-
 }
 
+
 /**
- * Fonction helper qui permet de d'éxécuter des requêtes SQL et de lancer `callaback`
+ * Fonction helper qui permet de d'éxécuter des requêtes SQL et de lancer `callback`
  * @param con, mysql connection
  * @param query_str, requete sql à jouer
  * @param req, http request
@@ -77,6 +87,7 @@ function run_query(con, query_str, req, res, callback) {
         }
     });
 }
+
 
 /**
  * Shift de `shift_value` (entier)
@@ -117,9 +128,8 @@ function shift_character(c, shift_value) {
     }
 
     return CONST.alpha_Array[circular_i]
-
-
 }
+
 
 /**
  * Retourne le hash du mot de passe
@@ -180,7 +190,7 @@ function handler_login_result(result, req, res){
 }
 
 /**
- * callback de la fonction register
+ * callback de la fonction register, si l'insertion s'est faite correctement on flag
  * @param result
  * @param req
  * @param res
@@ -193,7 +203,7 @@ function handler_register(result, req, res){
         res.writeHead(302, {Location: "/"});
         res.end();
     }else{
-        connected_username = undefined
+        connected_username = undefined;
         res.end("Not able to register")
     }
 }
@@ -261,35 +271,89 @@ function register(req, res) {
 }
 
 /**
- *
+ * callback qui formate le resultat SQL `results` sous forme de tableau HTML
  * @param results
  * @param req
  * @param res
  */
 function handler_stats(results, req, res){
     res.writeHead(200, {'Content-Type': 'text/html'});
-    var result_str = "<ul>";
+    var result_str = "<table border='1'> <tr><th> User</th> <th> Connection Date </th></tr> ";
     for (var i =0; i<results.length; i++){
         console.log(results[i]);
-        result_str += `<li> user ${results[i]["username"]}, date ${results[i]["connection_date"]} </li> `
+        result_str += `<tr><td> ${results[i]["username"]} </td> <td> date ${results[i]["connection_date"]} </td> </tr>`
     }
-
+    result_str += "</table>";
+    result_str += "export the result <a href='/export'> Export</a>";
     res.end(result_str)
 
 }
 
+
 /**
- *
+ * callback qui formate le resultats SQL `results` sous forme de fichier csv et le renvoie au client en attachement.
+ * @param results
+ * @param req
+ * @param res
+ */
+function handler_export(results, req, res){
+
+    var content = "User;Connection Date\n";
+    for (var i =0; i<results.length; i++){
+        console.log(results[i]);
+        content += `${results[i]["username"]};${results[i]["connection_date"]}\n`
+    }
+    var file = './media/export.csv';
+
+    fs.writeFileSync(file, content);
+
+    var filename = path.basename(file);
+    var mimetype = "text/csv";
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    res.setHeader('Content-type', mimetype);
+
+    var filestream = fs.createReadStream(file);
+    filestream.pipe(res);
+
+
+}
+
+/**
+ * Renvoie les stats de connexion
  * @param req
  * @param res
  */
 function stats(req, res) {
-    var query_str = "select * from Stats";
-    run_query(con, query_str, req, res, handler_stats)
+
+    if (connected_username){
+        var query_str = "select * from Stats order by connection_date desc";
+        run_query(con, query_str, req, res, handler_stats)
+    }else{
+        res.writeHead(302, {Location: "/login/"});
+        res.end();
+    }
 }
 
 /**
- *
+ * Permet le download des stats de connexion sous forme de fichier csv.
+ * @param req
+ * @param res
+ */
+function export_results(req, res){
+
+    if (connected_username){
+        var query_str = "select * from Stats order by connection_date desc";
+        run_query(con, query_str, req, res, handler_export)
+    }else{
+        res.writeHead(302, {Location: "/login/"});
+        res.end();
+    }
+
+}
+
+/**
+ * Insert en base le login et la date de connection si le user est connu.
  * @param req
  * @param res
  */
@@ -362,8 +426,12 @@ module.exports = {
             register(req, res)
         }else if (req.url.indexOf("stats") > 0){ // /stats
             stats(req, res)
+        }else if (req.url.indexOf("export") > 0){ // /stats
+            export_results(req, res)
 
-        }else{  // default, les autres url
+        }
+
+        else{  // default, les autres url
             home(req, res)
         }
 

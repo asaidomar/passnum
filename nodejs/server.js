@@ -1,17 +1,16 @@
+"use strict";
+
 // import de module
 var http = require('http');
 var url = require('url');
 
 // import relatif, le module utils.js est relatif au module courant.
 var utils = require("./utils");
-
-
-const port = 1337;
-const host = '127.0.0.1';
+const CONST = require('./const');
 
 
 /**
- * Fonction de création de de server, point d'entrée du script.
+ * Fonction de création du server, point d'entrée de l'appplication.
  * @param port
  * @param http
  * @param url
@@ -30,4 +29,4 @@ function init_server(port, http, url, host) {
 
 
 // call de la fonction
-init_server(port, http, url, host);
+init_server(CONST.port, http, url, CONST.host);
