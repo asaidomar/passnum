@@ -12,7 +12,40 @@ var dbo;
 
 var client = redis.createClient();
 
-var url = "mongodb://localhost:27017/";
+const url = "mongodb://localhost:27017/";
+
+
+function get_mongo(attr, value){
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        var filter = {};
+        filter[attr] = value;
+        console.log(filter);
+        dbo.collection(mongo_collection).findOne(filter, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            db.close();
+        });
+    });
+}
+
+
+function count_mongo(attr, value) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        var filter = {};
+        filter[attr] = {$regex : `.*${value}.*`};
+        console.log(filter);
+        dbo.collection(mongo_collection).count(filter, function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            db.close();
+        });
+    });
+}
+
 
 
 function filter_mongo(attr, value) {
@@ -64,9 +97,10 @@ function populate_mongo(N) {
 
         for (var i = 0; i < N; i++) {
             var personne = {
-                name: "personne "  + i,
+                name: "personne " + i + 10000,
                 address: i + " rue no man land, 13013 Marseille",
                 phone: "063435677 " + i
+
             };
 
             dbo.collection(mongo_collection).insertOne(personne, function (err, res) {
@@ -194,10 +228,8 @@ function main() {
         var action = args[1];
         if (action === "populate"){
             var n = parseInt(args[2]);
-
             return populate_redis(n || N)
         }
-
         if (action === "get"){
             var key = args[2];
             redis_get(key)
@@ -216,11 +248,20 @@ function main() {
             var attr = args[2];
             var value = args[3];
             filter_mongo(attr, value)
+        }if( action === "get"){
+            var attr = args[2];
+            var value = args[3];
+            get_mongo(attr, value)
+        }if( action === "count"){
+            var attr = args[2];
+            var value = args[3];
+            count_mongo(attr, value)
         }
-
+    }else{
+        (function () {
+            console.error(args[0], "Unknown command ");
+        })();
     }
-
-
 }
 
 
