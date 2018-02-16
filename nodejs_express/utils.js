@@ -294,8 +294,6 @@ function stats(req, res) {
         var query_str = "select * from Stats order by connection_date desc";
         run_query(con, query_str, req, res)
             .then(function (results) { handler_stats(results, req, res) })
-
-
     }else{
         res.redirect("/login/")
     }

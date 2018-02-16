@@ -1,20 +1,16 @@
-const  N = 1000;
+"use strict";
 const fs = require("fs");
 const redis = require("redis");
-var Db = require('mongodb').Db,
-    MongoClient = require('mongodb').MongoClient,
-    Server = require('mongodb').Server;
-
+var MongoClient = require('mongodb').MongoClient;
 
 const mongo_collection = "addresses";
-
+const  N = 1000;
 const filename = "db.json";
 
 var addresses_book = {};
 var dbo;
 
-
-client = redis.createClient();
+var client = redis.createClient();
 
 var url = "mongodb://localhost:27017/";
 
@@ -31,9 +27,7 @@ function filter_mongo(attr, value) {
             console.log(result);
             db.close();
         });
-
     });
-
 }
 
 
@@ -105,8 +99,8 @@ function populate_redis(N ) {
     return true
 }
 
-function populate_db(N, callback) {
 
+function populate_db(N, callback) {
     console.log(`populate ${N} persons`);
     for (var i = 0; i< N; i++){
         var personne = {
