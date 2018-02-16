@@ -117,7 +117,7 @@ function shift_character(c, shift_value) {
     }
 
     if (i < 0){
-        throw Error(c + 'Not valid character');
+        throw Error(c + ' Not valid character');
     }
 
 
@@ -251,8 +251,7 @@ function challenge_register(req, res, username, password){
     connected_username = username;
     return run_query(con, query_str)
         .then(function (results) { handler_register(results, req, res) })
-        .error(function(e){console.log("Error handler " + e)})
-        .catch(function(e){console.log("Catch handler " + e)});
+
 }
 
 
@@ -332,9 +331,9 @@ function home(req, res) {
 }
 
 
-function get_register_form() {
+function get_register_form(req, res) {
     // on lit le cotenu de la template register.pug a laquelle on injecte la valeur de l'objet suivant:
-    res.render("login", {
+    res.render("register", {
         message: {
             error: "",
             info: ""
@@ -389,7 +388,7 @@ var dispatch_routes = function (app_) {
     app.post("/login", urlencodedParser, post_login_form);
 
     app.get("/register", get_register_form);
-    app.post("/login", urlencodedParser, post_register_form);
+    app.post("/register", urlencodedParser, post_register_form);
 
     app.get("/stats", stats);
 

@@ -16,7 +16,7 @@ const CONST = require('./const');
  * @param url
  * @param host
  */
-function init_server(port, http, url, host) {
+function init_server(port, http, host) {
 
     // objet server
     var server = http.createServer(utils.dispatch);
@@ -29,4 +29,4 @@ function init_server(port, http, url, host) {
 
 
 // call de la fonction
-init_server(CONST.port, http, url, CONST.host);
+init_server(CONST.port, http,  CONST.host);

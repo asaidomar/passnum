@@ -71,16 +71,16 @@ function insert_name(name, res) {
 
 /**
  * Fonction helper qui permet de d'éxécuter des requêtes SQL et de lancer `callback`
- * @param con, mysql connection
+ * @param connection, mysql connection
  * @param query_str, requete sql à jouer
  * @param req, http request
  * @param res, http response
  * @param callback
  */
-function run_query(con, query_str, req, res, callback) {
+function run_query(connection, query_str, req, res, callback) {
     console.log("query to be run");
     console.log(query_str);
-    con.query(query_str, function (err, result, fields) {
+    connection.query(query_str, function (err, result, fields) {
         console.log(result);
         if (callback) {
             callback(result, req, res);
@@ -395,7 +395,7 @@ function login(req, res){
             challenge_login(req, res, body_obj.login, body_obj.password);
         });
 
-    }else{
+    }else{ // GET
 
         res.end(login_form);
     }
@@ -405,22 +405,23 @@ function login(req, res){
 // on export un objet anonyme qui possède en clef `hello`, `dispatch`...
 // à noter que la valeur d'une clef peut etre une fonction, un type primitif ou un autre objet
 module.exports = {
-    hello: function (req, res) {
+    hello: function (request, response) {
 
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        var queryData = url.parse(req.url, true).query;
+        response.writeHead(200, {'Content-Type': 'text/plain'});
+        var queryData = url.parse(request.url, true).query;
         if (queryData.name) {
             // user told us their name in the GET request, ex: http://host:8000/?name=Tom
-            res.end('Hello ' + queryData.name + '\n');
+            response.end('Hello ' + queryData.name + '\n');
         } else {
-            res.end('Hello World\n');
+            response.end('Hello World\n');
         }
     },
 
     // fonction de dispatch en fonction de l'url demandé
     dispatch: function (req, res) {
         req.username = {};
-        if (req.url.indexOf("login") > 0){ // /login
+        console.log(req.url);
+        if (req.url.indexOf("login") > 0){ // /login  if (req.url === "/login")   var test = "chaine" ; test.indexOf("t")
             login(req, res)
         }else if (req.url.indexOf("register") > 0){ // /register
             register(req, res)
