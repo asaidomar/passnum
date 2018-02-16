@@ -249,8 +249,10 @@ function challenge_register(req, res, username, password){
     var hashed_password = get_hash(password);
     var query_str = `insert into User (username, password) VALUE ('${username}', '${hashed_password}')`;
     connected_username = username;
+    req.username = {};
     return run_query(con, query_str)
         .then(function (results) { handler_register(results, req, res) })
+        .catch(function (reason) { console.log(reason) })
 
 }
 
