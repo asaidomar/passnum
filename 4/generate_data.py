@@ -107,6 +107,15 @@ Gerda Scheck  
 Kazuko Sears  
 Shanti Saucier"""
 
+TAB_USERS = USERS.splitlines()
+
+
+promos = ["promo 2018", "promo 2017", "promo 2016", "promo 2015",
+          "Math Spe 2017", "Math Spe 2016",
+          "Chimie Spe 2017", "Chimie Spe 2016",
+          "Micro Elect 2017", "Micro Elect 2016",
+          "Passnum 2017", "Passnum 2018"]
+
 
 def generate_room():
     with open("salle.txt", "w") as fout:
@@ -120,18 +129,14 @@ def generate_room():
                 has_proj = random.choice([0, 1])
                 print( "%s\t%s\t%s\t%s\t%s\t%s" % (id_bat, i, i, capacite_salle, has_board, has_proj), file=fout)
 
+
 def generate_promo():
     id_promos = []
-    promos = ["promo 2017", "promo 2016", "promo 2015",
-              "Math Spe 2017", "Math Spe 2016",
-              "Chimie Spe 2017", "Chimie Spe 2016",
-              "Micro Elect 2017", "Micro Elect 2016",
-              "Passnum 2017"]
 
     with open("promo.txt", "w") as fout:
         print("id_promo\tid_ecole\tid_responsable\tannee\tspecialite", file=fout)
         for i, promo in enumerate(promos, start=1):
-            id_resp = random.randint(1, MAX_USERS)
+            id_resp = random.randint(1, len(TAB_USERS))
             parts = promo.split()
             year = parts.pop()
             spe = " ".join(parts)
@@ -142,7 +147,6 @@ def generate_promo():
     return id_promos
 
 def get_random_num(long_=10):
-
     return "".join([ str(random.randint(0, 9)) for _ in range(long_)])
 
 
@@ -156,17 +160,15 @@ def generate_users():
     with open("personnel.txt", "w") as fout:
         print("id_personnel\tid_responsable\tnom\tprenom\tid_secu\tstatus\tnum_banque\tdate_entree\tdate_sortie", file=fout)
         for i  in range(2, MAX_USERS+2):
-            id_resp = random.choice([""] + list(range(1, 10)) )
+            id_resp = random.choice([""] + list(range(1, 10)))
             f_name, l_name = random.choice(full_names),  random.choice(full_names)
             num_secu = get_random_num(15)
             status = random.choice(["Interne", "Vacataire", "Prestataire"])
             before = datetime.timedelta(days=365 * random.randint(1, 30))
             entree = datetime.datetime.utcnow() - before
-
             raw = [i, id_resp, l_name.upper(), f_name.title(),
                    num_secu, status, gen_ban(),
-                   entree.strftime("%d/%m/%Y"), "NA"]
-
+                   entree.strftime("%Y-%m-%d"), "NA"]
             print("\t".join(str(s) for s in raw), file=fout)
 
 
@@ -184,6 +186,7 @@ def generate_student(id_promos):
             raw = [i, id_promo, l_name.upper(), f_name.title(), num_secu, gen_ban(), age]
             print("\t".join(str(s) for s in raw), file=fout)
 
+
 def generate_service_user():
     services = "Informatique,Enseignement,Scolarité,Gestion,Direction,RH,Relation Entreprise,Recherche".split(",")
     roles = "Directeur,Responsable,Collaborateur".split(",")
@@ -200,9 +203,6 @@ def generate_service_user():
                 role = random.choice(roles)
             raw = [i, id_service, role]
             print("\t".join(str(s) for s in raw), file=fout)
-
-
-
 
 def main():
     generate_room()

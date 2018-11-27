@@ -79,7 +79,8 @@ INSERT INTO Ecole(nom_ecole, nom_directeur)
 -- Informatique, Enseignement, Scolarité, Gestion, Direction, RH, Relation Entreprise, Recherche
 CREATE TABLE Service(id_ecole INT(10),
                     id_service INT(10) PRIMARY KEY,
-                    nom_service VARCHAR (30) UNIQUE ) ;
+                    nom_service VARCHAR (30) UNIQUE,
+                    FOREIGN KEY (id_ecole) REFERENCES Ecole(id_ecole)) ;
 
 -- QUESTION 5
 INSERT INTO  Service(id_ecole, id_service, nom_service)
@@ -99,7 +100,12 @@ id_ecole	Code ecole	N	10	Ref Ecole
 id_batiment	Code du batiment	N	10	clef primaire
 nom_batiment	Nom du batiment	A	30
  */
-CREATE TABLE Batiment(id_ecole INT(10), id_batiment INT(10), nom_batiment VARCHAR (30));
+CREATE TABLE Batiment(id_ecole INT(10),
+                      id_batiment INT(10),
+                      nom_batiment VARCHAR (30),
+                      FOREIGN KEY (id_ecole) REFERENCES Ecole(id_ecole)
+
+);
 
 -- QUESTION 7
 -- Pythagore, Euclide, Archimède, Copernic, Galilée, Képler, Descartes, Torricelli, Newton, Laplace
@@ -133,7 +139,10 @@ CREATE TABLE Salle(
             num_salle VARCHAR (30),
             capacite_salle INT(4),
             possede_tableau Enum('0', '1'),
-            possede_retro Enum('0', '1'));
+            possede_retro Enum('0', '1'),
+            FOREIGN KEY (id_batiment) REFERENCES Batiment(id_batiment)
+
+);
 
 -- QUESTION 9
 LOAD DATA LOCAL INFILE '/Users/alisaidomar/passnum/4/salle.txt' INTO TABLE Salle
@@ -161,8 +170,10 @@ CREATE TABLE Promo(
           id_ecole INT(10),
           id_responsable INT(10),
           annee INT(4),
-          specialite VARCHAR (50)
+          specialite VARCHAR (50),
+          FOREIGN KEY (id_ecole) REFERENCES Ecole(id_ecole)
           );
+
 -- QUESTION 11
 LOAD DATA LOCAL INFILE 'promo.txt' INTO TABLE Promo
             COLUMNS TERMINATED BY "\t"
@@ -186,14 +197,14 @@ date_sortie	Date de fin de contrat / Date de départ	DATE
 
 CREATE TABLE Personnel(
             id_personnel INT(10) PRIMARY KEY,
-            id_responsable INT(10),
+            id_responsable INT(10) NULL,
             nom VARCHAR (250),
             prenom VARCHAR (250),
             id_secu VARCHAR (20),
-            status ENUM("Vacataire", "Interne", "Prestataire"),
+            status ENUM('Vacataire', 'Interne', 'Prestataire'),
             num_banque VARCHAR (50),
             date_entree DATE,
-            date_sortie DATE) ;
+            date_sortie DATE, ) ;
 
 -- QUESTION 13
 LOAD DATA LOCAL INFILE 'personnel.txt' INTO TABLE Personnel
@@ -220,7 +231,8 @@ CREATE TABLE Etudiant(
             prenom VARCHAR (250),
             id_secu INT(20),
             num_banque VARCHAR (50),
-            age INT(2)
+            age INT(2),
+            FOREIGN KEY (id_promo) REFERENCES Promo(id_promo)
             );
 
 -- QUESTION 15
@@ -228,6 +240,7 @@ LOAD DATA LOCAL INFILE 'etudiant.txt' INTO TABLE Etudiant
             COLUMNS TERMINATED BY "\t"
             LINES TERMINATED BY "\n"
             IGNORE 1 LINES;
+
 
 -- QUESTION 16
 SELECT COUNT(id_etudiant) from Etudiant;

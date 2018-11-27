@@ -367,6 +367,15 @@ function home(req, res) {
 
 }
 
+
+function login(req, res){
+    if (req.method === "POST"){
+        return handler_form_content(req, res)
+    }else{
+        return print_form()
+    }
+}
+
 /**
  * fonction qui gère le login de l'utilisateur
  * @param req, objet request
@@ -443,3 +452,21 @@ module.exports = {
 };
 
 
+function dispatch (req, res) {
+    req.username = {};
+    console.log(req.url);
+    if (req.url.indexOf("login") > 0) { //
+        login(req, res)
+    } else if (req.url.indexOf("register") > 0) { // /register
+        register(req, res)
+    } else if (req.url.indexOf("stats") > 0) { // /stats
+        stats(req, res)
+    } else if (req.url.indexOf("export") > 0) { // /stats
+        export_results(req, res)
+
+    }
+
+    else {  // default, les autres url
+        home(req, res)
+    }
+}
