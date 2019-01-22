@@ -16,14 +16,14 @@ con.connect(function (err) {
 
 
 
-function do_query(query, callback, fallback){
+function do_query(query_str, callback, fallback){
     con.connect(function (err) {
         if (err) {
-            //console.error(err);
+            console.error(err);
             // throw err;
         }
         console.log("Connected!");
-        con.query(query, function (err, result) {
+        con.query(query_str, function (err, result) {
             if (err) {
                 fallback(err);
             }

@@ -1,6 +1,6 @@
 const http = require('http');
 const url  = require('url');
-const database = require("./database")
+const database = require("./database");
 
 let neededstats = [];
 
@@ -19,7 +19,7 @@ function display_films(result, response){
 
 function display_acteurs(result, response){
     for (let i = 0; i < result.length; i++) {
-        let result_str = ` Num ${result[i].NUMP}, titre ${result[i].PRENOM}, genre ${result[i].NOM}, annee, ${result[i].DATENAIS} \n`;
+        let result_str = ` Num ${result[i].NUMP}, prenom ${result[i].PRENOM}, nom ${result[i].NOM}, datenais, ${result[i].DATENAIS} \n`;
         //console.log(result_str);
         response.write(result_str);
     }
