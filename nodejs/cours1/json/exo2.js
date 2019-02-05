@@ -4,8 +4,10 @@
 // lire depuis le fichier et afficher navigateur le contenu du JSON
 const http = require('http');
 const url  = require('url');
+const fs = require("fs");
 
 const connexion_file = "stats.json";
+let connexion_tab = [];
 
 
 /**
@@ -13,17 +15,20 @@ const connexion_file = "stats.json";
  * @param req
  * @param res
  */
-function store_connexion(req, res){
-
-
+function store_connexion(query){
+    let d = new Date();
+    let data = [d.toString(), query.name];
+    connexion_tab.push(data);
+    return data
 }
 
 /**
  * dumps to file the connexion tab `connexion_tab`
  * @param filename
- * @param connexion_tab
  */
-function dump(filename, connexion_tab) {
+function dump() {
+    let data_str = JSON.stringify(connexion_tab,  null, 4);
+    fs.writeFileSync(connexion_file, data_str)
 
 }
 
@@ -31,7 +36,7 @@ function dump(filename, connexion_tab) {
  * Load from file the connexions
  */
 function load_connexion(filename) {
-    //return
+    return fs.readFileSync(filename)
 }
 
 function display_connexion(req, res){
@@ -44,11 +49,13 @@ function display_connexion(req, res){
  * @param res, response object, https://www.tutorialspoint.com/nodejs/nodejs_response_object.htm
  */
 function dispatch_request(req, res) {
-    if (req.url === "/users") {
-        store_connexion();
-        dump(connexion_file);
-    } else if(req.url === "/stats"){
-        display_connexion()
+    let q = url.parse(req.url, true);
+    if (q.pathname === "/users") {
+        let data = store_connexion(q.query);
+        dump(connexion_file, connexion_tab);
+        res.end(`hello "${data}"`)
+    } else if(q.pathname === "/stats"){
+        display_connexion(req, res)
     }
     else {
         res.end("else")

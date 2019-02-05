@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c529e63-d2ba-4869-924d-94194cc552b6" name="Default" comment="promo5 solutions">
-      <change afterPath="$PROJECT_DIR$/nodejs/cours1/json/exo2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eval/evaluation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/eval/evaluation.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodejs/cours1/json/exo2.js" beforeDir="false" afterPath="$PROJECT_DIR$/nodejs/cours1/json/exo2.js" afterDir="false" />
     </list>
     <ignored path="passnum.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,11 +128,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/exo2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="106">
+              <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/stats.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="154" selection-start-column="154" selection-end-column="154" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/IPython/html/static/components/codemirror/mode/livescript/livescript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="234" column="4" selection-start-line="234" selection-start-column="4" selection-end-line="234" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -470,7 +486,7 @@
       <workItem from="1547540245627" duration="11970000" />
       <workItem from="1548150222640" duration="12628000" />
       <workItem from="1549303380651" duration="1842000" />
-      <workItem from="1549356304926" duration="9359000" />
+      <workItem from="1549356304926" duration="10952000" />
     </task>
     <task id="LOCAL-00001" summary="cours 4">
       <created>1510783527693</created>
@@ -616,7 +632,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62947000" />
+    <option name="totallyTimeSpent" value="64540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="733" extended-state="0" />
@@ -708,8 +724,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nodejs_express/pug/register.pug" />
-    <entry file="file://$PROJECT_DIR$/nodejs_express/pug/login.pug" />
     <entry file="file://$PROJECT_DIR$/nodejs/server.js" />
     <entry file="file://$PROJECT_DIR$/nodejs/db.js" />
     <entry file="file://$PROJECT_DIR$/nodejs_express/db.js" />
@@ -928,10 +942,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/IPython/html/static/components/codemirror/mode/livescript/livescript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="234" column="4" selection-start-line="234" selection-start-column="4" selection-end-line="234" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/stats.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="154" selection-start-column="154" selection-end-column="154" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/exo2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="106">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
