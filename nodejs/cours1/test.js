@@ -4,4 +4,17 @@ function number0_1000(end){
     }
 }
 
-module.exports.number0_1000 = number0_1000;
+function public() {
+
+
+}
+
+function _private(){
+    ///
+}
+
+
+module.exports = {
+    public:public
+};
+
