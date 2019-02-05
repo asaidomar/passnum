@@ -6,6 +6,7 @@ const http = require('http');
 const url  = require('url');
 
 const connexion_file = "stats.json";
+let connexion_tab = []; 
 
 
 /**
@@ -14,7 +15,7 @@ const connexion_file = "stats.json";
  * @param res
  */
 function store_connexion(req, res){
-
+    // push connexion to connexion_tab
 
 }
 
@@ -24,7 +25,7 @@ function store_connexion(req, res){
  * @param connexion_tab
  */
 function dump(filename, connexion_tab) {
-
+    // dump connexion_tab to file 
 }
 
 /**
