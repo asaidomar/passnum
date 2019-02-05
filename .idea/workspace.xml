@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c529e63-d2ba-4869-924d-94194cc552b6" name="Default" comment="promo5 solutions">
-      <change afterPath="$PROJECT_DIR$/eval/solution.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodejs/cours1/database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodejs/cours1/intro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodejs/cours1/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodejs/cours1/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodejs/cours1/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nodejs/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2011_sql_data/dpt2015.txt.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2011_sql_data/pop-sexe-age-quinquennal6814.xls.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2011_sql_data/solution.sql" beforeDir="false" afterPath="$PROJECT_DIR$/2011_sql_data/solution.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nodejs/cours1/json/exo2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eval/evaluation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/eval/evaluation.sql" afterDir="false" />
     </list>
     <ignored path="passnum.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +18,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/passnum$test.coverage" NAME="test Coverage Results" MODIFIED="1512650293502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exo" />
     <SUITE FILE_PATH="coverage/passnum$exo_anglais.coverage" NAME="exo_anglais Coverage Results" MODIFIED="1518715553378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/passnum$generate_data.coverage" NAME="generate_data Coverage Results" MODIFIED="1548157081614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/4" />
+    <SUITE FILE_PATH="coverage/passnum$generate_data.coverage" NAME="generate_data Coverage Results" MODIFIED="1549371917317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/4" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -108,55 +101,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodejs/data.js">
+        <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/cours.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2205">
-              <caret line="147" column="4" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
+            <state relative-caret-position="336">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/eval/evaluation.sql">
+        <entry file="file://$PROJECT_DIR$/nodejs/cours1/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="173" column="48" selection-start-line="173" selection-start-column="48" selection-end-line="173" selection-end-column="48" />
+            <state relative-caret-position="301">
+              <caret line="29" selection-start-line="29" selection-end-line="41" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodejs/cours1/intro.js">
+        <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/exo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
+            <state relative-caret-position="193">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/nodejs/cours1/server.js">
+        <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/exo2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodejs/cours1/database.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../node_modules/mysql/lib/protocol/Parser.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,51 +143,7 @@
         <entry file="file://$PROJECT_DIR$/nodejs/cours1/test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodejs/cours1/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b136f27e-e256-4d06-a381-6895a71505de/console_4.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="uml://DATABASE/b136f27e-e256-4d06-a381-6895a71505de.SCHEMA:CINEMA">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>DATABASE</ID>
-              <OriginalElement>b136f27e-e256-4d06-a381-6895a71505de.SCHEMA:CINEMA</OriginalElement>
-              <nodes>
-                <node x="239.0" y="251.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.DISTRIBUTION</node>
-                <node x="238.0" y="0.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.ACTEUR</node>
-                <node x="0.0" y="251.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.PERSONNE</node>
-                <node x="0.0" y="0.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.FILM</node>
-              </nodes>
-              <notes />
-              <edges />
-              <settings layout="Hierarchic Group" zoom="1.0" x="226.5" y="184.5" />
-              <SelectedNodes>
-                <node>b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.DISTRIBUTION</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Key columns</Category>
-                <Category>Columns</Category>
-              </Categories>
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -246,6 +180,7 @@
       <find>run</find>
       <find>get</find>
       <find>join</find>
+      <find>create table</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -255,6 +190,7 @@
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/nodejs/cours1</dir>
+      <dir>$PROJECT_DIR$/nodejs</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -263,9 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/4/service_user.txt" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/exo/test.js" />
         <option value="$PROJECT_DIR$/exo/test.py" />
         <option value="$PROJECT_DIR$/anglais/vocabulaire.txt" />
         <option value="$PROJECT_DIR$/exo_anglais.py" />
@@ -306,20 +239,24 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b136f27e-e256-4d06-a381-6895a71505de/console_4.sql" />
         <option value="$PROJECT_DIR$/eval/solution.sql" />
         <option value="$PROJECT_DIR$/nodejs/data.js" />
-        <option value="$PROJECT_DIR$/eval/evaluation.sql" />
-        <option value="$PROJECT_DIR$/nodejs/cours1/test.js" />
         <option value="$PROJECT_DIR$/nodejs/cours1/main.js" />
         <option value="$PROJECT_DIR$/nodejs/cours1/intro.js" />
         <option value="$PROJECT_DIR$/nodejs/cours1/database.js" />
         <option value="$PROJECT_DIR$/nodejs/cours1/server.js" />
+        <option value="$PROJECT_DIR$/eval/evaluation.sql" />
+        <option value="$PROJECT_DIR$/nodejs/cours1/test.java" />
+        <option value="$PROJECT_DIR$/nodejs/cours1/test.js" />
+        <option value="$PROJECT_DIR$/nodejs/cours1/json/cours.js" />
+        <option value="$PROJECT_DIR$/nodejs/cours1/json/address_book.json" />
+        <option value="$PROJECT_DIR$/nodejs/cours1/json/exo.js" />
+        <option value="$PROJECT_DIR$/nodejs/cours1/json/exo2.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="192" />
-    <option name="y" value="24" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="730" />
+    <option name="height" value="733" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -349,7 +286,8 @@
               <item name="passnum" type="b2602c69:ProjectViewProjectNode" />
               <item name="passnum" type="462c0819:PsiDirectoryNode" />
               <item name="nodejs" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="cours1" type="462c0819:PsiDirectoryNode" />
+              <item name="json" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="passnum" type="b2602c69:ProjectViewProjectNode" />
@@ -530,7 +468,9 @@
       <workItem from="1544553371681" duration="45000" />
       <workItem from="1546934879318" duration="19297000" />
       <workItem from="1547540245627" duration="11970000" />
-      <workItem from="1548150222640" duration="9011000" />
+      <workItem from="1548150222640" duration="12628000" />
+      <workItem from="1549303380651" duration="1842000" />
+      <workItem from="1549356304926" duration="9359000" />
     </task>
     <task id="LOCAL-00001" summary="cours 4">
       <created>1510783527693</created>
@@ -676,27 +616,27 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48129000" />
+    <option name="totallyTimeSpent" value="62947000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="732" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="733" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" order="0" sideWeight="0.49029127" visible="true" weight="0.09773829" />
+      <window_info active="true" id="Project" order="0" sideWeight="0.49029127" visible="true" weight="0.19063005" />
       <window_info id="Structure" order="1" weight="0.13408723" />
       <window_info id="Favorites" order="2" sideWeight="0.50970876" side_tool="true" weight="0.25686592" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.6003236" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.59870553" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3284553" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49919224" weight="0.58184767" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49919224" weight="0.39158577" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50080776" side_tool="true" weight="0.49514562" />
       <window_info anchor="bottom" id="Messages" order="10" />
-      <window_info anchor="bottom" id="Python Console" order="11" weight="0.32362458" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.32200646" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32894737" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.4978038" />
@@ -705,7 +645,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32956383" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.23828755" />
+      <window_info anchor="right" id="Database" order="4" weight="0.23828755" />
     </layout>
     <layout-to-restore>
       <window_info id="Project" order="0" sideWeight="0.49029127" visible="true" weight="0.1542811" />
@@ -768,13 +708,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nodejs_express/html/login.html" />
-    <entry file="file://$PROJECT_DIR$/nodejs_express/html/register.html" />
-    <entry file="file://$PROJECT_DIR$/nodejs_express/const.js" />
-    <entry file="file://$PROJECT_DIR$/nodejs/html/register.html" />
-    <entry file="file://$PROJECT_DIR$/nodejs_express/pug/results_csv.pug" />
-    <entry file="file://$PROJECT_DIR$/nodejs/html/login.html" />
-    <entry file="file://$PROJECT_DIR$/nodejs/const.js" />
     <entry file="file://$PROJECT_DIR$/nodejs_express/pug/register.pug" />
     <entry file="file://$PROJECT_DIR$/nodejs_express/pug/login.pug" />
     <entry file="file://$PROJECT_DIR$/nodejs/server.js" />
@@ -864,13 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eval/solution.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2385">
-          <caret line="159" column="48" selection-start-line="159" selection-start-column="48" selection-end-line="159" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodejs/data.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2205">
@@ -878,8 +804,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodejs/film.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/nodejs/film.txt" />
+    <entry file="file://$PROJECT_DIR$/../Desktop/CINEMA_ACTEUR.sql" />
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/intro.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eval/evaluation.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eval/solution.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2385">
+          <caret line="159" column="48" selection-start-line="159" selection-start-column="48" selection-end-line="159" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139065">
+          <caret line="128" column="9520" selection-start-line="128" selection-start-column="9520" selection-end-line="128" selection-end-column="9520" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../node_modules/mysql/lib/protocol/Parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b136f27e-e256-4d06-a381-6895a71505de/console_4.sql">
       <provider selected="true" editor-type-id="text-editor">
@@ -894,10 +868,10 @@
           <ID>DATABASE</ID>
           <OriginalElement>b136f27e-e256-4d06-a381-6895a71505de.SCHEMA:CINEMA</OriginalElement>
           <nodes>
-            <node x="239.0" y="251.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.DISTRIBUTION</node>
-            <node x="238.0" y="0.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.ACTEUR</node>
             <node x="0.0" y="251.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.PERSONNE</node>
             <node x="0.0" y="0.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.FILM</node>
+            <node x="239.0" y="251.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.DISTRIBUTION</node>
+            <node x="238.0" y="0.0">b136f27e-e256-4d06-a381-6895a71505de.TABLE:CINEMA.ACTEUR</node>
           </nodes>
           <notes />
           <edges />
@@ -912,52 +886,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eval/evaluation.sql">
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="173" column="48" selection-start-line="173" selection-start-column="48" selection-end-line="173" selection-end-column="48" />
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodejs/cours1/main.js">
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/cours.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        <state relative-caret-position="336">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/address_book.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1065561" selection-start-column="1065561" selection-end-column="1065561" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/exo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nodejs/cours1/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodejs/cours1/intro.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../node_modules/mysql/lib/protocol/Parser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodejs/cours1/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nodejs/cours1/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="301">
+          <caret line="29" selection-start-line="29" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodejs/cours1/json/exo2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -129,13 +129,13 @@ WHERE Location_2018.Client_id = Client.Client_id
 GROUP BY Vehicule_id;
 
 -- 3
-SELECT HOUR(Date_de_fin - Date_de_debut) as heures_location
+SELECT SUM(HOUR(Date_de_fin - Date_de_debut)) as heures_location
 FROM Location_2019,
      Client
 WHERE Location_2019.Client_id = Client.Client_id
   AND Client.Client_id = 1;
 
-SELECT HOUR(Date_de_fin - Date_de_debut) as heures_location
+SELECT SUM(HOUR(Date_de_fin - Date_de_debut)) as heures_location
 FROM Location_2018,
      Client
 WHERE Location_2018.Client_id = Client.Client_id
