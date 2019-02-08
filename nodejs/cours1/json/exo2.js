@@ -11,9 +11,7 @@ let connexion_tab = [];
 
 
 /**
- * apped in tab, the user connexion
- * @param req
- * @param res
+ * append in tab, the user connexion
  */
 function store_connexion(query){
     let d = new Date();
@@ -40,7 +38,8 @@ function load_connexion(filename) {
 }
 
 function display_connexion(req, res){
-    res.end(load_connexion(connexion_file))
+    res.write(load_connexion(connexion_file));
+    res.end()
 }
 
 /**
