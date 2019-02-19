@@ -153,6 +153,38 @@ function display_results(query, res){
 }
 
 /**
+ * Return order object from request object,
+ * parse url like http://localhost:8080/user/order?email=test@test.com_3&id=1&name=TEST_produit_1&prix_unitaire=10&quantite=50
+ * @param req
+ * @returns {undefined}
+ */
+function get_order_data(req) {
+    let q = url.parse(req.url, true);
+    let d = new Date();
+    if (q.query.email && q.query.id && q.query.name){
+        return {
+            id: q.query.id,
+            user_email: q.query.email,
+            item_name: q.query.name,
+            item_price: q.query.prix_unitaire,
+            item_quantity: q.query.quantite,
+            order_date: d.toString()
+        }
+    }else{
+        throw error("email not supplied")
+    }
+}
+
+/**
+ * return the sql query to insert order in table UserOrder
+ * @param order
+ * @returns {string}
+ */
+function get_insert_order_query(order) {
+    return `INSERT INTO UserOrder(id, user_email, item_name, item_price, item_quantity, order_date) VALUES("${order.id}", "${order.user_email}", "${order.item_name}", "${order.item_price}", "${order.item_quantity}", "${order.order_date}")`
+}
+
+/**
  * Function to handle all asked url and called to related function
  * @param req, request object
  * @param res, result object
@@ -190,6 +222,24 @@ function dispatch(req, res) {
         // check user data if exists in db
          check_login(email, mdp, res)
     }
+    else if (pathname === "/user/order") {
+        let order = get_order_data(req);
+        //console.log(user);
+
+
+        let query_order = get_insert_order_query(order);
+        //console.log(query);
+
+        database.do_query(query_order,
+            (results) => {console.log("Order inserted", results)},
+            (results) => {console.log("Order NOT inserted!", results)}
+            );
+
+        res.writeHead(302, {
+          'Location': `/?email=${order.email}`
+        });
+        res.end();
+    }
     else if (pathname === "/stat/connexions") {
         // display connnexon stats
         let query_str = `select * from Connection`;
@@ -203,11 +253,14 @@ function dispatch(req, res) {
     }
 
     else{
-        res.end(`welcome ${email}, on ${date.toString()} `);
-        log_connexion(email)
+        if (email){
+            res.end(`welcome ${email}, on ${date.toString()} `);
+            log_connexion(email)
+        }
     }
 }
 
 // create HTTP server
 http.createServer(dispatch).listen(8080);
 console.log("server en ecoute http://localhost:8080");
+let test_url = "http://localhost:8080/user/order?email=test@test.com_3&id=1&name=TEST_produit&prix_unitaire=10&quantite=5"
