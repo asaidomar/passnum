@@ -146,12 +146,28 @@ function join(tab, sep){
  */
 function display_results(query, res, format){
 
+    function write_header(result_entry, tag){
+        let header_tab = [];
+
+        for (let key in result_entry){
+            header_tab.push(`<${tag}>${key}</${tag}>`)
+        }
+        return join(header_tab, "")
+
+    }
+
+
     function _display_result_as_html(results){
-        res.writeHeader(200, {"Content-Type": "text/html"});
-        let result_str = "";
+
+        if (results.length === 0){
+            return res.end()
+        }
+
+        let result_str = "<table border='1'>";
+        result_str += `<tr>${write_header(results[0], "th")}</tr>`;
         for (let i = 0; i < results.length; i++) {
             let row_tab = [];
-            row_tab.push("<tr>");
+            row_tab.push("<tr style='border: 1px'>");
             for (let key in results[i]){
                 //console.log(i);
                 console.log(key, results[i][key]);
@@ -161,6 +177,7 @@ function display_results(query, res, format){
             result_str += join(row_tab, "");
             result_str += "\n"
         }
+        result_str += "</table>";
 
         res.end(result_str)
     }
@@ -271,6 +288,8 @@ function dispatch(req, res) {
     }
 
     else if (pathname === "/user/orders") {
+        res.writeHeader(200, {"Content-Type": "text/html"});
+        res.write("<h2> Liste des commandes </h2>");
         // display connnexon stats
         let query_str;
         if (email){
@@ -281,10 +300,10 @@ function dispatch(req, res) {
 
         console.log(query_str);
 
-        display_results(query_str, res, 'json')
+        display_results(query_str, res, 'html')
     }
-    else if (pathname.indexOf("/user/order/")) {
-        let order_id = "";
+    else if (pathname.includes("/user/order/")) {
+        let order_id = pathname[pathname.length - 1];
         let query_str;
         if (order_id){
             query_str = `select * from UserOrder where id="${order_id}"`;
@@ -292,14 +311,13 @@ function dispatch(req, res) {
             res.end("no id supplied")
         }
         //console.log(query_str);
-
         display_results(query_str, res, 'json')
     }
 
     else if (pathname === "/stat/users") {
         // display users stats
         let query_str = `select * from User`;
-        display_results(query_str, res, "json")
+        display_results(query_str, res, "html")
     }
 
     else{
