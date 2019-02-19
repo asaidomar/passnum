@@ -132,21 +132,44 @@ function log_connexion(email){
 
 }
 
+function join(tab, sep){
+    // console.log(tab.join(sep));
+    return tab.join(sep);
+}
+
+
 /**
  * Display result, bare result in JSON like format.
  * @param query, sql query
  * @param res, result object
  * @TODO: improve the display and display as HTML
  */
-function display_results(query, res){
+function display_results(query, res, format){
 
-    function __display_result(results){
+    function _display_result_as_html(results){
+        res.writeHeader(200, {"Content-Type": "text/html"});
         let result_str = "";
         for (let i = 0; i < results.length; i++) {
-            result_str += JSON.stringify(results[i]);
+            let row_tab = [];
+            row_tab.push("<tr>");
+            for (let key in results[i]){
+                //console.log(i);
+                console.log(key, results[i][key]);
+                row_tab.push(`<td> ${results[i][key]}</td>`);
+            }
+            row_tab.push("</tr>");
+            result_str += join(row_tab, "");
             result_str += "\n"
         }
+
         res.end(result_str)
+    }
+
+    function __display_result(results){
+        if (format === "html"){
+            return res.end(_display_result_as_html(results))
+        }
+        return res.end(JSON.stringify(results))
     }
 
     database.do_query(query, __display_result)
@@ -193,6 +216,7 @@ function dispatch(req, res) {
     let q = url.parse(req.url, true);
     let pathname = q.pathname;
     let email = q.query.email;
+    //console.log(q);
 
     let date = new Date();
     // TODO: return HTML, utf8 charset
@@ -243,13 +267,39 @@ function dispatch(req, res) {
     else if (pathname === "/stat/connexions") {
         // display connnexon stats
         let query_str = `select * from Connection`;
-        display_results(query_str, res)
+        display_results(query_str, res, 'json')
+    }
+
+    else if (pathname === "/user/orders") {
+        // display connnexon stats
+        let query_str;
+        if (email){
+            query_str = `select * from UserOrder where user_email="${email}"`
+        }else{
+            query_str = `select * from UserOrder`;
+        }
+
+        console.log(query_str);
+
+        display_results(query_str, res, 'json')
+    }
+    else if (pathname.indexOf("/user/order/")) {
+        let order_id = "";
+        let query_str;
+        if (order_id){
+            query_str = `select * from UserOrder where id="${order_id}"`;
+        }else{
+            res.end("no id supplied")
+        }
+        //console.log(query_str);
+
+        display_results(query_str, res, 'json')
     }
 
     else if (pathname === "/stat/users") {
         // display users stats
         let query_str = `select * from User`;
-        display_results(query_str, res)
+        display_results(query_str, res, "json")
     }
 
     else{
